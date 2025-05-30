@@ -74,7 +74,7 @@ class Pages extends Controller
         return view('admin.website_pages.site_home', $this->data);
     }
 
-    public function find_jobs(Request $request)
+    public function aviva_pools(Request $request)
     {
         // has_access(12);
         $page = Sitecontent::where('ckey', $request->segment(3))->first();
@@ -121,7 +121,7 @@ class Pages extends Controller
         } else {
             $this->data['sitecontent'] = array();
         }
-        return view('admin.website_pages.site_find_jobs', $this->data);
+        return view('admin.website_pages.site_aviva_pools', $this->data);
     }
 
     public function browse_jobs(Request $request)
@@ -143,6 +143,24 @@ class Pages extends Controller
             }
             if (!is_array($content_row))
                 $content_row = array();
+
+                 if (!is_array($content_row))
+                $content_row = array();
+            for ($i = 1; $i <= 1; $i++) {
+                if ($request->hasFile('image' . $i)) {
+
+                    $request->validate([
+                        'image' . $i => 'mimes:png,jpg,jpeg,svg,gif,webp|max:40000'
+                    ]);
+                    $image = $request->file('image' . $i)->store('public/images/');
+                    if (!empty($image)) {
+                        $input['image' . $i] = basename($image);
+                    }
+                } else {
+                    // $input['image'.$i]='';
+                }
+            }
+            // pr($input);
 
             $data = serialize(array_merge($content_row, $input));
             $page->ckey = $request->segment(3);
@@ -608,7 +626,7 @@ class Pages extends Controller
     }
 
 
-    public function how_we_work(Request $request)
+    public function colors(Request $request)
     {
         has_access(12);
         $page = Sitecontent::where('ckey', $request->segment(3))->first();
@@ -655,7 +673,7 @@ class Pages extends Controller
         } else {
             $this->data['sitecontent'] = array();
         }
-        return view('admin.website_pages.site_how_we_work', $this->data);
+        return view('admin.website_pages.site_colors', $this->data);
     }
 
     public function about_us(Request $request)

@@ -185,7 +185,7 @@ Route::middleware(['is_admin'])->group(function () {
 
     Route::match(['GET', 'POST'], '/admin/pages/home', [Pages::class, 'home']);
     Route::match(['GET', 'POST'], '/admin/pages/cta_section', [Pages::class, 'cta_section']);
-    Route::match(['GET', 'POST'], '/admin/pages/find_jobs', [Pages::class, 'find_jobs']);
+    Route::match(['GET', 'POST'], '/admin/pages/aviva_pools', [Pages::class, 'aviva_pools']);
     Route::match(['GET', 'POST'], '/admin/pages/browse_jobs', [Pages::class, 'browse_jobs']);
     Route::match(['GET', 'POST'], '/admin/pages/apply_job', [Pages::class, 'apply_job']);
     Route::match(['GET', 'POST'], '/admin/pages/resources', [Pages::class, 'resources']);
@@ -196,7 +196,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/pages/hire_talent', [Pages::class, 'hire_talent']);
     Route::match(['GET', 'POST'], '/admin/pages/services_template', [Pages::class, 'services_template']);
     Route::match(['GET', 'POST'], '/admin/pages/executive_search', [Pages::class, 'executive_search']);
-    Route::match(['GET', 'POST'], '/admin/pages/how_we_work', [Pages::class, 'how_we_work']);
+    Route::match(['GET', 'POST'], '/admin/pages/colors', [Pages::class, 'colors']);
     Route::match(['GET', 'POST'], '/admin/pages/about_us', [Pages::class, 'about_us']);
     Route::match(['GET', 'POST'], '/admin/pages/board_of_directors', [Pages::class, 'board_of_directors']);
     Route::match(['GET', 'POST'], '/admin/pages/executive_group', [Pages::class, 'executive_group']);

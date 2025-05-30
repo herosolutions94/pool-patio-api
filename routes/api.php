@@ -42,7 +42,7 @@ Route::post('/apply', [App\Http\Controllers\Ajax::class, 'apply']);
 Route::match(['GET', 'POST'], '/site-settings', [ContentPages::class, 'website_settings']);
 // Route::match(['GET','POST'], '/member-settings', [ContentPages::class,'member_settings']);
 Route::match(['GET', 'POST'], '/home-page', [ContentPages::class, 'home_page']);
-Route::match(['GET', 'POST'], '/find-jobs-page', [ContentPages::class, 'find_jobs_page']);
+Route::match(['GET', 'POST'], '/aviva-pools-page', [ContentPages::class, 'aviva_pools_page']);
 Route::match(['GET', 'POST'], '/browse-jobs-page', [ContentPages::class, 'browse_jobs_page']);
 Route::match(['GET', 'POST'], '/job-details-page/{slug}', [ContentPages::class, 'job_details_page']);
 Route::match(['GET', 'POST'], '/apply-job-page', [ContentPages::class, 'apply_job_page']);
@@ -52,7 +52,7 @@ Route::match(['GET', 'POST'], '/areas-experties-page', [ContentPages::class, 'ar
 Route::match(['GET', 'POST'], '/hire-talent-page', [ContentPages::class, 'hire_talent_page']);
 Route::match(['GET', 'POST'], '/services-template-page', [ContentPages::class, 'services_template_page']);
 Route::match(['GET', 'POST'], '/executive-search-page', [ContentPages::class, 'executive_search_page']);
-Route::match(['GET', 'POST'], '/how-we-work-page', [ContentPages::class, 'how_we_work_page']);
+Route::match(['GET', 'POST'], '/how-we-work-page', [ContentPages::class, 'colors_page']);
 Route::match(['GET', 'POST'], '/about-us-page', [ContentPages::class, 'about_us_page']);
 Route::match(['GET', 'POST'], '/board-of-directors-page', [ContentPages::class, 'board_of_directors_page']);
 Route::match(['GET', 'POST'], '/executive-group-page', [ContentPages::class, 'executive_group_page']);

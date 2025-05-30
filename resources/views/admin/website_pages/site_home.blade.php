@@ -229,8 +229,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section2_text">Text</label>
-                                <textarea id="section2_text" name="section2_text" rows="4"
+                                <label class="form-label" for="section1_text">Text</label>
+                                <textarea id="section1_text" name="section1_text" rows="4"
                                     class=" editor">{{ !empty($sitecontent['section1_text']) ? $sitecontent['section1_text'] : '' }}</textarea>
                             </div>
                         </div>
@@ -246,7 +246,7 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section2_btn_link">Button Link URL</label>
+                                <label class="form-label" for="section1_btn_link">Button Link URL</label>
                                 <select name="section1_btn_link" class="form-control" required>
                                     <option value="">Set URL</option>
 

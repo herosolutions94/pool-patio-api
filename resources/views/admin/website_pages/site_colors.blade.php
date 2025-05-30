@@ -191,4 +191,7 @@
             <button class="btn btn-primary" type="submit">Update Page</button>
         </div>
     </div>
-    @endsection
+
+
+</form>
+@endsection

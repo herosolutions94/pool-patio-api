@@ -71,9 +71,9 @@ class ContentPages extends Controller
 
         exit(json_encode($this->data));
     }
-    public function find_jobs_page(Request $request)
+    public function aviva_pools_page(Request $request)
     {
-        $this->data['content'] = get_page('find_jobs');
+        $this->data['content'] = get_page('aviva_pools');
         $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
         $this->data['meta_desc'] = (object)[
             'meta_title' => $this->data['content']['meta_title'],
@@ -396,9 +396,9 @@ class ContentPages extends Controller
     //     exit(json_encode($this->data));
     // }
 
-    // public function how_we_work_page(Request $request)
+    // public function colors_page(Request $request)
     // {
-    //     $this->data['content'] = get_page('how_we_work');
+    //     $this->data['content'] = get_page('colors');
     //     $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
     //     $this->data['meta_desc'] = (object)[
     //         'meta_title' => $this->data['content']['meta_title'],
