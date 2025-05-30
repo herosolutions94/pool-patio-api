@@ -1741,6 +1741,79 @@ function get_floor_plan($id)
         return false;
     }
 }
+
+if (! function_exists('getSpecify')) {
+    function getSpecify(int $product_id)
+    {
+        return DB::table('aviva_specifications')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getColours')) {
+    function getColours(int $product_id)
+    {
+        return DB::table('aviva_colours')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+
+if (! function_exists('getDesign')) {
+    function getDesign(int $product_id)
+    {
+        return DB::table('aviva_designs')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+
+if (! function_exists('getGallery')) {
+    function getGallery(int $product_id)
+    {
+        return DB::table('renaissance_gallery')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getColGallery')) {
+    function getColGallery(int $product_id)
+    {
+        return DB::table('colors_gallery')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getFeatures')) {
+    function getFeatures(int $product_id)
+    {
+        return DB::table('renaissance_feature')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getDesignList')) {
+    function getDesignList(int $product_id)
+    {
+        return DB::table('renaissance_designs')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
 function format_amount($amount, $size = 2)
 {
     $amount = floatval($amount);

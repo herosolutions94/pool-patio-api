@@ -34,7 +34,7 @@
     },
     "autoload": {
         "files": [
-            "app/helprers/common.php",
+            "app/helprers/common.php"
         ],
         "classmap": [
             "app/Libraries"

@@ -142,7 +142,7 @@
                     </ul>
                 </li> --}}
 
-                <li class="sidebar-item">
+                <!-- <li class="sidebar-item">
                     <a class="sidebar-link has-arrow {{ $admin_page == 'blog' || $admin_page == 'blog_categories' ? 'active' : '' }}"
                         href="javascript:void(0)" aria-expanded="false">
                         <iconify-icon icon="ooui:articles-rtl"></iconify-icon>
@@ -170,7 +170,7 @@
 
 
                     </ul>
-                </li>
+                </li> -->
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link has-arrow {{ $admin_page == 'executive' || $admin_page == 'directors' || $admin_page == 'team' ? 'active' : '' }}"
@@ -231,10 +231,26 @@
 
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ $admin_page == 'job_opportunities' ? 'active' : '' }}"
-                        href="{{ url('admin/job_opportunities') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ $admin_page == 'aviva' ? 'active' : '' }}"
+                        href="{{ url('admin/aviva') }}" aria-expanded="false">
                         <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
-                        <span class="hide-menu">Areas Of Expertise</span>
+                        <span class="hide-menu">Aviva Pools</span>
+                    </a>
+                </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'renaissance' ? 'active' : '' }}"
+                        href="{{ url('admin/renaissance') }}" aria-expanded="false">
+                        <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
+                        <span class="hide-menu">Renaissance Patio</span>
+                    </a>
+                </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'colors' ? 'active' : '' }}"
+                        href="{{ url('admin/colors') }}" aria-expanded="false">
+                        <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
+                        <span class="hide-menu">Colors</span>
                     </a>
                 </li>
 

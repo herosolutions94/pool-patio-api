@@ -28,6 +28,9 @@ use App\Http\Controllers\admin\Sub_admin;
 use App\Http\Controllers\admin\Permissions;
 use App\Http\Controllers\admin\Services;
 use App\Http\Controllers\admin\Specialization;
+use App\Http\Controllers\admin\Aviva;
+use App\Http\Controllers\admin\Renaissance;
+use App\Http\Controllers\admin\Color;
 use App\Http\Controllers\admin\Team;
 use App\Http\Controllers\Controller;
 
@@ -225,4 +228,23 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/subscribers/view/{id}', [Subscribers::class, 'view']);
     Route::match(['GET', 'POST'], '/admin/subscribers/delete/{id}', [Subscribers::class, 'delete']);
     Route::match(['GET', 'POST'], '/admin/subscribers/csv_export', [Subscribers::class, 'csv_export']);
+
+        /*==============================Aviva =====================================*/
+    Route::get('/admin/aviva', [Aviva::class, 'index']);
+    Route::match(['GET', 'POST'], '/admin/aviva/edit/{id}', [Aviva::class, 'edit']);
+    Route::match(['GET', 'POST'], '/admin/aviva/add', [Aviva::class, 'add']);
+    Route::match(['GET', 'POST'], '/admin/aviva/delete/{id}', [Aviva::class, 'delete']);
+
+
+       /*==============================Aviva =====================================*/
+    Route::get('/admin/renaissance', [Renaissance::class, 'index']);
+    Route::match(['GET', 'POST'], '/admin/renaissance/edit/{id}', [Renaissance::class, 'edit']);
+    Route::match(['GET', 'POST'], '/admin/renaissance/add', [Renaissance::class, 'add']);
+    Route::match(['GET', 'POST'], '/admin/renaissance/delete/{id}', [Renaissance::class, 'delete']);
+
+        /*==============================Aviva =====================================*/
+    Route::get('/admin/colors', [Color::class, 'index']);
+    Route::match(['GET', 'POST'], '/admin/colors/edit/{id}', [Color::class, 'edit']);
+    Route::match(['GET', 'POST'], '/admin/colors/add', [Color::class, 'add']);
+    Route::match(['GET', 'POST'], '/admin/colors/delete/{id}', [Color::class, 'delete']);
 });
