@@ -146,7 +146,7 @@
                     <a class="sidebar-link has-arrow {{ $admin_page == 'blog' || $admin_page == 'blog_categories' ? 'active' : '' }}"
                         href="javascript:void(0)" aria-expanded="false">
                         <iconify-icon icon="ooui:articles-rtl"></iconify-icon>
-                        <span class="hide-menu">Manage Articles</span>
+                        <span class="hide-menu">Manage Blogs</span>
                     </a>
                     <ul aria-expanded="false"
                         class="collapse first-level {{ $admin_page == 'blog' || $admin_page == 'blog_categories' ? 'in' : '' }}">
@@ -155,7 +155,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ $admin_page == 'blog_categories' ? 'active' : '' }}"
                                 href="{{ url('admin/blog_categories') }}">
-                                <span class="icon-small"></span>Article
+                                <span class="icon-small"></span>Blogs
                                 Categories
                             </a>
                         </li>
@@ -164,7 +164,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link {{ $admin_page == 'blog' ? 'active' : '' }}"
                                 href="{{ url('admin/blog') }}">
-                                <span class="icon-small"></span>Articles
+                                <span class="icon-small"></span>Blogs
                             </a>
                         </li>
 
@@ -231,14 +231,47 @@
 
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ $admin_page == 'job_opportunities' ? 'active' : '' }}"
-                        href="{{ url('admin/job_opportunities') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ $admin_page == 'aviva' ? 'active' : '' }}"
+                        href="{{ url('admin/aviva') }}" aria-expanded="false">
                         <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
-                        <span class="hide-menu">Areas Of Expertise</span>
+                        <span class="hide-menu">Aviva Pools</span>
+                    </a>
+                </li>
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'renaissance' ? 'active' : '' }}"
+                        href="{{ url('admin/renaissance') }}" aria-expanded="false">
+                        <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
+                        <span class="hide-menu">Renaissance Patio</span>
+                    </a>
+                </li>
+
+                 <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'stick-built' ? 'active' : '' }}"
+                        href="{{ url('admin/stick-built') }}" aria-expanded="false">
+                        <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
+                        <span class="hide-menu">Stick Built</span>
                     </a>
                 </li>
 
                 <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'hardscapes' ? 'active' : '' }}"
+                        href="{{ url('admin/hardscapes') }}" aria-expanded="false">
+                        <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
+                        <span class="hide-menu">Hardscapes</span>
+                    </a>
+                </li>
+
+
+                  <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'colors' ? 'active' : '' }}"
+                        href="{{ url('admin/colors') }}" aria-expanded="false">
+                        <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
+                        <span class="hide-menu">Colors</span>
+                    </a>
+                </li>
+
+                <!-- <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'services' ? 'active' : '' }}"
                         href="{{ url('admin/services') }}" aria-expanded="false">
                         <iconify-icon icon="carbon:cloud-services"></iconify-icon>
@@ -252,7 +285,7 @@
                         <iconify-icon icon="dashicons:testimonial"></iconify-icon>
                         <span class="hide-menu">Testimonials</span>
                     </a>
-                </li>
+                </li> -->
 
 
                 {{-- <li class="sidebar-item">
@@ -372,7 +405,7 @@
                         </li> --}}
 
 
-                {{-- <li class="sidebar-item">
+                 <li class="sidebar-item">
                             <a class="sidebar-link has-arrow {{ $admin_page == 'faqs' || $admin_page == 'faq_categories' ? 'active' : '' }}"
                                 href="javascript:void(0)" aria-expanded="false">
                                 <iconify-icon icon="mdi:faq"></iconify-icon>
@@ -391,7 +424,7 @@
 
 
                             </ul>
-                        </li> --}}
+                        </li> 
 
             </ul>
 
