@@ -219,7 +219,7 @@
 
                             <div class="row">
                                 <?php $section2 = 0; ?>
-                                @for ($i = 2; $i <= 4; $i++) <?php $section2 = $section2 + 1; ?> <div class="col-md-4">
+                                @for ($i = 3; $i <= 5; $i++) <?php $section2 = $section2 + 1; ?> <div class="col-md-4">
                                     <div class="card">
                                         <div class="card-header">
                                             <h5>Block {{ $section2 }}</h5>
@@ -398,11 +398,11 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <div class="file_choose_icon">
-                                            <img src="{{ get_site_image_src('images', !empty($sitecontent['image3']) ? $sitecontent['image3'] : '') }}"
+                                            <img src="{{ get_site_image_src('images', !empty($sitecontent['image6']) ? $sitecontent['image6'] : '') }}"
                                                 alt="matdash-img" class="img-fluid ">
                                         </div>
                                         <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                                        <input class="form-control uploadFile" name="image3" type="file"
+                                        <input class="form-control uploadFile" name="image6" type="file"
                                             data-bs-original-title="" title="">
                                     </div>
                                 </div>
@@ -424,9 +424,9 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section3_text">Text</label>
-                                <textarea id="section3_text" name="section3_text" rows="4"
-                                    class=" editor">{{ !empty($sitecontent['section3_text']) ? $sitecontent['section3_text'] : '' }}</textarea>
+                                <label class="form-label" for="section4_text">Text</label>
+                                <textarea id="section4_text" name="section4_text" rows="4"
+                                    class=" editor">{{ !empty($sitecontent['section4_text']) ? $sitecontent['section4_text'] : '' }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -434,20 +434,20 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section3_btn_txt">Button 1 Text</label>
-                                <input class="form-control" id="section3_btn_txt" type="text" name="section3_btn_txt"
-                                    placeholder="" value="{{ $sitecontent['section3_btn_txt'] ?? '' }}">
+                                <label class="form-label" for="section4_btn_txt">Button Text</label>
+                                <input class="form-control" id="section4_btn_txt" type="text" name="section4_btn_txt"
+                                    placeholder="" value="{{ $sitecontent['section4_btn_txt'] ?? '' }}">
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section3_btn_link">Button Link URL</label>
-                                <select name="section3_btn_link" class="form-control" required>
+                                <label class="form-label" for="section4_btn_link">Button Link URL</label>
+                                <select name="section4_btn_link" class="form-control" required>
                                     <option value="">Set URL</option>
 
                                     @foreach ($all_pages as $key => $page)
                                     <option value="{{ $key }}"
-                                        {{ !empty($sitecontent['section3_btn_link']) && $sitecontent['section3_btn_link'] == $key ? 'selected' : '' }}>
+                                        {{ !empty($sitecontent['section4_btn_link']) && $sitecontent['section4_btn_link'] == $key ? 'selected' : '' }}>
                                         {{ $page }}
                                     </option>
                                     @endforeach
@@ -487,11 +487,11 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <div class="file_choose_icon">
-                                            <img src="{{ get_site_image_src('images', !empty($sitecontent['image4']) ? $sitecontent['image4'] : ' ') }}"
+                                            <img src="{{ get_site_image_src('images', !empty($sitecontent['image7']) ? $sitecontent['image7'] : ' ') }}"
                                                 alt="matdash-img" class="img-fluid ">
                                         </div>
                                         <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
-                                        <input class="form-control uploadFile" name="image2" type="file"
+                                        <input class="form-control uploadFile" name="image7" type="file"
                                             data-bs-original-title="" title="">
                                     </div>
                                 </div>
