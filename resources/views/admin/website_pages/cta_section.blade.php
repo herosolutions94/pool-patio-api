@@ -29,13 +29,7 @@
                                 value="{{ $sitecontent['cta_heading'] ?? '' }}">
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label" for="cta_btn1_txt">Button Text</label>
-                            <input class="form-control" id="cta_btn1_txt" type="text" name="cta_btn1_txt" placeholder=""
-                                value="{{ $sitecontent['cta_btn1_txt'] ?? '' }}">
-                        </div>
-                    </div>
+
                 </div>
 
                 <div class="row">
@@ -43,90 +37,41 @@
                         <div class="mb-3">
                             <label class="form-label" for="cta_text">Text</label>
                             <textarea id="cta_text" name="cta_text" rows="4"
-                                class=" editor">{{ !empty($sitecontent['cta_text']) ? $sitecontent['cta_text'] : '' }}</textarea>
+                                class=" form-control">{{ !empty($sitecontent['cta_text']) ? $sitecontent['cta_text'] : '' }}</textarea>
                         </div>
                     </div>
                 </div>
 
-                {{-- <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="cta_btn1_txt">Button Text</label>
-                                <input class="form-control" id="cta_btn1_txt" type="text" name="cta_btn1_txt"
-                                    placeholder="" value="{{ $sitecontent['cta_btn1_txt'] ?? '' }}">
+
             </div>
-        </div>
 
-        <div class="col">
-            <div class="mb-3">
-                <label class="form-label" for="cta_btn1_link">Button Link</label>
-                <select name="cta_btn1_link" class="form-control" required>
-                    <option value="">Set URL</option>
-
-                    @foreach ($all_pages as $key => $page)
-                    <option value="{{ $key }}"
-                        {{ !empty($sitecontent['cta_btn1_link']) && $sitecontent['cta_btn1_link'] == $key ? 'selected' : '' }}>
-                        {{ $page }}</option>
-                    @endforeach
-                </select>
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="cta_btn1_txt">Button Text</label>
+                    <input class="form-control" id="cta_btn1_txt" type="text" name="cta_btn1_txt" placeholder=""
+                        value="{{ $sitecontent['cta_btn1_txt'] ?? '' }}">
+                </div>
             </div>
-        </div>
-    </div> --}}
 
-    {{-- <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="cta_btn2_txt">Button 2 Text</label>
-                                <input class="form-control" id="cta_btn2_txt" type="text" name="cta_btn2_txt"
-                                    placeholder="" value="{{ $sitecontent['cta_btn2_txt'] ?? '' }}">
-    </div>
-    </div>
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="cta_btn1_link">Button Link</label>
+                    <select name="cta_btn1_link" class="form-control" required>
+                        <option value="">Set URL</option>
 
-    <div class="col">
-        <div class="mb-3">
-            <label class="form-label" for="cta_btn2_link">Button 2 Link</label>
-            <select name="cta_btn2_link" class="form-control" required>
-                <option value="">Set URL</option>
-
-                @foreach ($all_pages as $key => $page)
-                <option value="{{ $key }}"
-                    {{ !empty($sitecontent['cta_btn2_link']) && $sitecontent['cta_btn2_link'] == $key ? 'selected' : '' }}>
-                    {{ $page }}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    </div>
-
-    <div class="row">
-        <div class="col">
-            <div class="mb-3">
-                <label class="form-label" for="cta_btn3_txt">Button 3 Text</label>
-                <input class="form-control" id="cta_btn3_txt" type="text" name="cta_btn3_txt" placeholder=""
-                    value="{{ $sitecontent['cta_btn3_txt'] ?? '' }}">
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="mb-3">
-                <label class="form-label" for="cta_btn3_link">Button 3 Link</label>
-                <select name="cta_btn3_link" class="form-control" required>
-                    <option value="">Set URL</option>
-
-                    @foreach ($all_pages as $key => $page)
-                    <option value="{{ $key }}"
-                        {{ !empty($sitecontent['cta_btn3_link']) && $sitecontent['cta_btn3_link'] == $key ? 'selected' : '' }}>
-                        {{ $page }}</option>
-                    @endforeach
-                </select>
+                        @foreach ($all_pages as $key => $page)
+                        <option value="{{ $key }}"
+                            {{ !empty($sitecontent['cta_btn1_link']) && $sitecontent['cta_btn1_link'] == $key ? 'selected' : '' }}>
+                            {{ $page }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
 
 
-    </div> --}}
 
-    </div>
-    </div>
+
     </div>
 
     <div class="col-12">

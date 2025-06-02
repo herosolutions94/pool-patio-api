@@ -22,7 +22,7 @@
                     <p>A timeless solid-roof patio cover offering full shade and weather protection—perfect for cozy
                         backyard gatherings and year-round enjoyment.</p>
                     <div class="btn_blk">
-                        <a href="patio-details.php" class="site_btn">Read More</a>
+                        <a href="/patio-details" class="site_btn">Read More</a>
                     </div>
                 </div>
             </div>
@@ -107,16 +107,16 @@
         </div>
     </div>
 </section>
-<section class="cta_sec bg">
+<section class="cta_sec">
     <div class="contain">
         <div class="flex">
             <div class="sec_heading" data-aos="fade-up">
-                <h2>Let’s Talk About Your Outdoor Space</h2>
-                <p>Whether you're starting from scratch or updating your backyard, we’re here to help you design and
-                    build something extraordinary.</p>
+                <h2>{!! $cta_section['cta_heading'] ?? '' !!}</h2>
+                <p>{!! $cta_section['cta_text'] ?? '' !!}</p>
             </div>
             <div class="btn_blk text-center" data-aos="fade-up">
-                <a href="request-quote.php" class="site_btn light">Schedule a Free Consultation</a>
+                <a href="{{ url($cta_section['cta_btn1_link']) }}" class="site_btn light">{!!
+                    $cta_section['cta_btn1_txt'] ?? '' !!}</a>
             </div>
         </div>
     </div>

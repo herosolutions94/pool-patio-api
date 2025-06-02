@@ -84,6 +84,8 @@ Route::get('/admin/logout', [Index::class, 'logout']);
     Route::match(['GET', 'POST'], '/faqs', [FrontendPages::class, 'faqs_page']);
     Route::match(['GET', 'POST'], '/blog', [FrontendPages::class, 'blog_page']);
     Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
+    Route::match(['GET', 'POST'], '/pool-details', [FrontendPages::class, 'pool_details_page']);
+    Route::match(['GET', 'POST'], '/patio-details', [FrontendPages::class, 'patio_details_page']);
 
 
 Route::middleware(['is_admin'])->group(function () {
