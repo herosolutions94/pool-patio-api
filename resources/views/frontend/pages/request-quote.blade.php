@@ -4,12 +4,11 @@
 
 @section('content')
 
-<section class="sm_banner" style="background:url(./assets/images/banner4.jpg)">
+<section class="sm_banner"
+    style="background-image: url('{{ get_site_image_src('images', !empty($content['image1']) ? $content['image1'] : 'default.jpg') }}');">
     <div class="contain">
         <div class="cntnt" data-aos="fade-up">
-            <h1>Request a Free Quote</h1>
-            <p>Let’s bring your outdoor vision to life. Fill out the form below and a member of our team will reach out
-                to schedule a consultation.</p>
+            {!! $content['banner_text'] ?? '' !!}
         </div>
     </div>
 </section>
@@ -79,8 +78,7 @@
                     <button class="site_btn">Submit</button>
                 </div>
             </form>
-            <p><small>*We respect your privacy. Your information will only be used to respond to your inquiry and will
-                    not be shared.</small></p>
+            <p><small>{!! $content['section1_text'] ?? '' !!}</small></p>
         </div>
     </div>
 </section>
