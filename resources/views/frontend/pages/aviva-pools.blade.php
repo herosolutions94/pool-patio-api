@@ -26,7 +26,7 @@
                         <p>Crafted from a seamless union of water, earth, and nature, The Cosmopolitan epitomizes an
                             extraordinary design.</p>
                         <div class="btn_blk">
-                            <a href="pool-details.php" class="site_btn block">Explore The Limitless™</a>
+                            <a href="/pool-details" class="site_btn block">Explore The Limitless™</a>
                         </div>
                     </div>
                 </div>
@@ -236,12 +236,12 @@
     <div class="contain">
         <div class="flex">
             <div class="sec_heading" data-aos="fade-up">
-                <h2>Let’s Talk About Your Outdoor Space</h2>
-                <p>Whether you're starting from scratch or updating your backyard, we’re here to help you design and
-                    build something extraordinary.</p>
+                <h2>{!! $cta_section['cta_heading'] ?? '' !!}</h2>
+                <p>{!! $cta_section['cta_text'] ?? '' !!}</p>
             </div>
             <div class="btn_blk text-center" data-aos="fade-up">
-                <a href="request-quote.php" class="site_btn light">Schedule a Free Consultation</a>
+                <a href="{{ url($cta_section['cta_btn1_link']) }}" class="site_btn light">{!!
+                    $cta_section['cta_btn1_txt'] ?? '' !!}</a>
             </div>
         </div>
     </div>
