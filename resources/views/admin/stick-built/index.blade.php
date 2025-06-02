@@ -137,6 +137,14 @@
                     </div>
                 </div>
 
+                 <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label class="form-label" for="short_text">Text</label>
+                        <textarea id="short_text" name="short_text" rows="4"
+                            class=" editor">{{ !empty($content['short_text']) ? $content['short_text'] : '' }}</textarea>
+                    </div>
+                </div>
+
 
 
                 <div class="col-lg-12 d-flex align-items-stretch">

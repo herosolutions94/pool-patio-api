@@ -22,6 +22,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use PHPUnit\Util\Log\TeamCity;
+use App\Models\Colors_model;
+use App\Models\Hardscapes_model;
+use App\Models\Stick_Built_model;
+use App\Models\Renaissance_model;
+use App\Models\Aviva_model;
+
 
 class FrontendPages extends Controller
 {
@@ -43,7 +49,7 @@ class FrontendPages extends Controller
 
         ];
         $this->data['cta_section'] = get_page('cta_section');
-        return view('frontend/pages/home',$this->data);
+        return view('frontend/pages/home', $this->data);
     }
 
     public function about_page(Request $request)
@@ -65,7 +71,7 @@ class FrontendPages extends Controller
         $this->data['cta_section'] = get_page('cta_section');
         $this->data['industries'] = getMultiText('industries-section1');
         $this->data['testimonials'] = Testimonial_model::orderBy('id', 'ASC')->where('status', '1')->get();
-        return view('frontend/pages/about',$this->data);
+        return view('frontend/pages/about', $this->data);
     }
 
     public function aviva_pools_page(Request $request)
@@ -84,10 +90,10 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-       
-        return view('frontend/pages/aviva-pools',$this->data);
+        $this->data['avivas'] = Aviva_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
 
 
+        return view('frontend/pages/aviva-pools', $this->data);
     }
 
     public function renaissance_patio_page(Request $request)
@@ -106,10 +112,11 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-       
-        return view('frontend/pages/renaissance-patio',$this->data);
+
+       $this->data['renaissances'] = Renaissance_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
 
 
+        return view('frontend/pages/renaissance-patio', $this->data);
     }
 
     public function stick_built_page(Request $request)
@@ -128,12 +135,12 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-                $this->data['cta_section'] = get_page('cta_section');
-
-       
-        return view('frontend/pages/stick-built',$this->data);
+        $this->data['cta_section'] = get_page('cta_section');
+        $this->data['sticks_built'] = Stick_Built_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
 
 
+
+        return view('frontend/pages/stick-built', $this->data);
     }
 
     public function request_quote_page(Request $request)
@@ -152,12 +159,10 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-                $this->data['cta_section'] = get_page('cta_section');
-
-       
-        return view('frontend/pages/request-quote',$this->data);
+        $this->data['cta_section'] = get_page('cta_section');
 
 
+        return view('frontend/pages/request-quote', $this->data);
     }
 
     // public function browse_jobs_page(Request $request)
@@ -324,12 +329,12 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-        
+
         $this->data['cta_section'] = get_page('cta_section');
         $this->data['job_opportunities'] = Job_opportunities_model::orderBy('id', 'ASC')->where('status', '1')->get();
         $this->data['testimonials'] = Testimonial_model::orderBy('id', 'ASC')->where('status', '1')->get();
 
-                return view('frontend/pages/faqs',$this->data);
+        return view('frontend/pages/faqs', $this->data);
     }
 
     public function aox_details_page(Request $request, $slug)
@@ -376,13 +381,10 @@ class FrontendPages extends Controller
 
         ];
         $this->data['cta_section'] = get_page('cta_section');
-        $this->data['job_opportunities'] = Job_opportunities_model::orderBy('id', 'ASC')->where('status', '1')->get();
-        $this->data['insights_articles'] = Blog_model::orderBy('id', 'DESC')->where('status', '1')->get();
-        $this->data['testimonials'] = Testimonial_model::orderBy('id', 'ASC')->where('status', '1')->get();
-
-                return view('frontend/pages/hardscapes',$this->data);
+        $this->data['hardscapes'] = Hardscapes_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
 
 
+        return view('frontend/pages/hardscapes', $this->data);
     }
 
     public function services_template_page(Request $request)
@@ -481,9 +483,16 @@ class FrontendPages extends Controller
 
         ];
         $this->data['cta_section'] = get_page('cta_section');
-        $this->data['testimonials'] = Testimonial_model::orderBy('id', 'ASC')->where('status', '1')->get();
+        $colors = Colors_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
+        foreach ($colors as $color) {
+            $color->images = DB::table('colors_gallery')
+                ->where('product_id', $color->id)
+                ->get();
+        }
 
-        return view('frontend/pages/colors',$this->data);
+        $this->data['colors'] = $colors;
+
+        return view('frontend/pages/colors', $this->data);
     }
 
     // public function about_us_page(Request $request)
@@ -635,10 +644,10 @@ class FrontendPages extends Controller
         $this->data['job_opportunities'] = Job_opportunities_model::orderBy('id', 'ASC')->where('status', '1')->get();
         $this->data['services'] = Service_model::orderBy('id', 'ASC')->where('status', '1')->get();
 
-        return view('frontend/pages/contact-us',$this->data);
+        return view('frontend/pages/contact-us', $this->data);
     }
 
-    
+
     public function terms_conditions_page(Request $request)
     {
         $this->data['content'] = get_page('terms_conditions');
@@ -679,7 +688,7 @@ class FrontendPages extends Controller
                 $blog_post->created_date = format_date($blog_post->created_at, 'd M, Y');
             }
         }
-        return view('frontend/pages/blog',$this->data);
+        return view('frontend/pages/blog', $this->data);
     }
     public function blog_details_page(Request $request, $slug)
     {
