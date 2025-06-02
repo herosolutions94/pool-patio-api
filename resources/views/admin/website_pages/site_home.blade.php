@@ -229,8 +229,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section2_text">Text</label>
-                                <textarea id="section2_text" name="section2_text" rows="4"
+                                <label class="form-label" for="section1_text">Text</label>
+                                <textarea id="section1_text" name="section1_text" rows="4"
                                     class=" editor">{{ !empty($sitecontent['section1_text']) ? $sitecontent['section1_text'] : '' }}</textarea>
                             </div>
                         </div>
@@ -246,7 +246,7 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section2_btn_link">Button Link URL</label>
+                                <label class="form-label" for="section1_btn_link">Button Link URL</label>
                                 <select name="section1_btn_link" class="form-control" required>
                                     <option value="">Set URL</option>
 
@@ -507,8 +507,8 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section2_btn_link">Button Link URL</label>
-                                <select name="section2_btn_link" class="form-control" required>
+                                <label class="form-label" for="section4_btn_link">Button Link URL</label>
+                                <select name="section4_btn_link" class="form-control" required>
                                     <option value="">Set URL</option>
 
                                     @foreach ($all_pages as $key => $page)
@@ -594,8 +594,8 @@
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label class="form-label" for="section2_btn_link">Button Link URL</label>
-                                <select name="section2_btn_link" class="form-control" required>
+                                <label class="form-label" for="section5_btn_link">Button Link URL</label>
+                                <select name="section5_btn_link" class="form-control" required>
                                     <option value="">Set URL</option>
 
                                     @foreach ($all_pages as $key => $page)
@@ -646,9 +646,10 @@
                             <div class="row">
                                 <div class="col">
                                     <div class="mb-3">
-                                        <label class="form-label" for="section6_text">Text</label>
-                                        <textarea id="section6_text" name="section6_text" rows="4"
-                                            class=" editor">{{ !empty($sitecontent['section6_text']) ? $sitecontent['section6_text'] : '' }}</textarea>
+                                        <label class="form-label" for="section6_heading">Heading</label>
+                                        <input class="form-control" id="section6_heading" type="text"
+                                            name="section6_heading" placeholder=""
+                                            value="{{ $sitecontent['section6_heading'] ?? '' }}">
                                     </div>
                                 </div>
                             </div>
