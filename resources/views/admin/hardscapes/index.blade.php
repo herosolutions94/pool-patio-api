@@ -7,7 +7,7 @@
 @endsection
 @section('page_content')
 @if (request()->segment(3) == 'edit' || request()->segment(3) == 'add')
-{!! breadcrumb('Add/Update Aviva Pools') !!}
+{!! breadcrumb('Add/Update Hardscapes') !!}
 <form class="form theme-form" method="post" action="" enctype="multipart/form-data" id="saveForm">
     @csrf
     <div class="card">
@@ -45,16 +45,12 @@
                             <h4 class="card-title"> Block</h4>
 
                             <div class="row mb-3">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <label for="name" class="form-label">Name</label>
                                     <input type="text" class="form-control" name="name"
                                         value="{{ !empty($row->name) ? $row->name : '' }}" required>
                                 </div>
-                                <div class="col-md-6">
-                                    <label for="title" class="form-label">Available</label>
-                                    <input type="text" class="form-control" name="title"
-                                        value="{{ !empty($row->title) ? $row->title : '' }}" required>
-                                </div>
+                               
                                 <!-- <div class="col-md-6">
                                     <label for="heading" class="form-label">Intro Heading</label>
                                     <input type="text" class="form-control" name="heading"
@@ -126,7 +122,7 @@
                             <h4 class="card-title">Main Image</h4>
                             <div class="text-center">
                                 <div class="file_choose_icon">
-                                    <img src="{{ get_site_image_src('aviva', !empty($row) ? $row->image1 : '') }}"
+                                    <img src="{{ get_site_image_src('hardscapes', !empty($row) ? $row->image1 : '') }}"
                                         alt="matdash-img" class="img-fluid" width="120" height="120">
                                 </div>
                                 <input class="form-control uploadFile" name="image1" type="file"
@@ -137,13 +133,13 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 d-flex align-items-stretch">
+                <!-- <div class="col-lg-6 d-flex align-items-stretch">
                     <div class="card w-100 border position-relative overflow-hidden">
                         <div class="card-body p-4">
                             <h4 class="card-title">Overlay Image</h4>
                             <div class="text-center">
                                 <div class="file_choose_icon">
-                                    <img src="{{ get_site_image_src('aviva', !empty($row) ? $row->image2 : '') }}"
+                                    <img src="{{ get_site_image_src('hardscapes', !empty($row) ? $row->image2 : '') }}"
                                         alt="matdash-img" class="img-fluid" width="120" height="120">
                                 </div>
                                 <input class="form-control uploadFile" name="image2" type="file"
@@ -152,7 +148,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="col-lg-12 d-flex align-items-stretch">
                     <div class="card w-100 border position-relative overflow-hidden">
@@ -180,7 +176,7 @@
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <div class="file_choose_icon">
-                                                <img src="{{ get_site_image_src('aviva', !empty($content['image3']) ? $content['image3'] : '') }}"
+                                                <img src="{{ get_site_image_src('hardscapes', !empty($content['image3']) ? $content['image3'] : '') }}"
                                                     alt="matdash-img" class="img-fluid ">
                                             </div>
                                             <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
@@ -207,57 +203,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="section1_btn_txt">Button 1 Text</label>
-                                            <input class="form-control" id="section1_btn_txt" type="text" name="section1_btn_txt"
-                                                placeholder="" value="{{ $content['section1_btn_txt'] ?? '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="section1_btn_link">Button Link URL</label>
-                                            <select name="section1_btn_link" class="form-control" required>
-                                                <option value="">Set URL</option>
-
-                                                @foreach ($all_pages as $key => $page)
-                                                <option value="{{ $key }}"
-                                                    {{ !empty($content['section1_btn_link']) && $content['section1_btn_link'] == $key ? 'selected' : '' }}>
-                                                    {{ $page }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="section2_btn_txt">Button 1 Text</label>
-                                            <input class="form-control" id="section2_btn_txt" type="text" name="section2_btn_txt"
-                                                placeholder="" value="{{ $content['section2_btn_txt'] ?? '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="section2_btn_link">Button Link URL</label>
-                                            <select name="section2_btn_link" class="form-control" required>
-                                                <option value="">Set URL</option>
-
-                                                @foreach ($all_pages as $key => $page)
-                                                <option value="{{ $key }}"
-                                                    {{ !empty($content['section2_btn_link']) && $content['section2_btn_link'] == $key ? 'selected' : '' }}>
-                                                    {{ $page }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                </div>
+                               
                             </div>
                         </div>
 
@@ -286,14 +232,7 @@
                                 </div>
 
                                 <div class="card-body">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="section2_heading">Small Heading</label>
-                                            <input class="form-control" id="section2_heading" type="text" name="section2_heading"
-                                                placeholder="" value="{{ $content['section2_heading'] ?? '' }}">
-                                        </div>
-                                    </div>
-
+                                    
                                     <div class="table-responsive">
                                         <table class="table text-nowrap mb-0 newTable" id="newTable">
                                             <thead class="header-item">
@@ -301,7 +240,6 @@
                                                     <th width="15%"> Image</th>
 
                                                     <th width="25%"> Title</th>
-                                                    <th width="30%"> Detail</th>
                                                     <th width="10%">Order No.</th>
                                                     <th width="5%">
                                                         <div class="action-btn">
@@ -314,7 +252,7 @@
                                             </thead>
                                             <tbody id="toolRepeater">
                                                 @php
-                                                $cover_material = isset($row) ? getSpecify($row->id) : [];
+                                                $cover_material = isset($row) ? getSpecifyHardscapes($row->id) : [];
                                                 $count = 1;
                                                 @endphp
 
@@ -327,7 +265,7 @@
                                                             <input type="file" name="cover_image[]"
                                                                 accept="image/*" id="newImgInput"
                                                                 style="display: none;" />
-                                                            <img src="{{ get_site_image_src('aviva', !empty($cover->cover_image) ? $cover->cover_image : '') }}"
+                                                            <img src="{{ get_site_image_src('hardscapes', !empty($cover->size_image) ? $cover->size_image : '') }}"
                                                                 alt="avatar" class=""
                                                                 style="width: 60%; cursor: pointer;background:#ddd"
                                                                 id="newImg">
@@ -338,12 +276,7 @@
                                                     <td>
                                                         <input type="text" name="cover_name[]" class="form-control" value="{{ $cover->title }}" placeholder=" Title" required>
                                                     </td>
-                                                    <td>
-                                                        <textarea class="editor" name="detail[]" required>{{ $cover->detail }}</textarea>
-
-
-                                                    </td>
-
+                                                   
 
                                                     <td>
                                                         <input type="number" name="order_no[]" class="form-control" value="{{ $cover->order_no }}" min="0" placeholder="Order No." required>
@@ -378,11 +311,7 @@
                                                     <td>
                                                         <input type="text" name="cover_name[]" class="form-control" placeholder="Cover Title" required>
                                                     </td>
-                                                    <td>
-                                                        <textarea class="editor" name="detail[]" required></textarea>
-
-                                                    </td>
-
+                                                
 
                                                     <td>
                                                         <input type="number" name="order_no[]" class="form-control" placeholder="Order No." min="0" required>
@@ -416,7 +345,7 @@
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <div class="file_choose_icon">
-                                                <img src="{{ get_site_image_src('aviva', !empty($content['image4']) ? $content['image4'] : '') }}"
+                                                <img src="{{ get_site_image_src('hardscapes', !empty($content['image4']) ? $content['image4'] : '') }}"
                                                     alt="matdash-img" class="img-fluid ">
                                             </div>
                                             <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
@@ -456,119 +385,6 @@
 
 
 
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h5>Available Colours List</h5>
-                                </div>
-                                <div class="card-body">
-                                    <div class="col">
-                                        <div class="mb-3">
-                                            <label class="form-label" for="section3_heading">Small Heading</label>
-                                            <input class="form-control" id="section3_heading" type="text" name="section3_heading"
-                                                placeholder="" value="{{ $content['section3_heading'] ?? '' }}">
-                                        </div>
-                                    </div>
-
-                                    <div class="table-responsive">
-                                        <table class="table text-nowrap mb-0 newTable" id="newTable">
-                                            <thead class="header-item">
-                                                <tr>
-                                                    <th width="25%">Color Image</th>
-                                                    <th width="25%">Color Title</th>
-                                                    <th width="10%">Order No.</th>
-                                                    <th width="5%">
-                                                        <div class="action-btn">
-                                                            <a href="javascript:void(0)" class="text-primary edit addNewRowTbl" id="addNewRowTbl">
-                                                                <i class="ti ti-plus fs-6 fw-bold"></i>
-                                                            </a>
-                                                        </div>
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="toolRepeater">
-                                                @php
-                                                $colours = isset($row) ? getColours($row->id) : [];
-                                                $count = 1;
-                                                @endphp
-
-                                                @if (countlength($colours) > 0)
-                                                @foreach ($colours as $colour)
-                                                <tr class="tool-row">
-
-                                                    <td>
-                                                        <div class="d-flex align-items-center" id="imgDiv">
-                                                            <input type="file" name="colour_image[]"
-                                                                accept="image/*" id="newImgInput"
-                                                                style="display: none;" />
-                                                            <img src="{{ get_site_image_src('aviva', !empty($colour->colour_image) ? $colour->colour_image : '') }}"
-                                                                alt="avatar" class=""
-                                                                style="width: 60%; cursor: pointer;background:#ddd"
-                                                                id="newImg">
-
-                                                        </div>
-                                                    </td>
-                                                    <input type="hidden" name="colour_id[]" value="{{ $colour->id }}">
-                                                    <td>
-                                                        <input type="text" name="colour_name[]" class="form-control" value="{{ $colour->title }}" placeholder="Colour Title" required>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <input type="number" name="order_no[]" class="form-control" value="{{ $colour->order_no }}" min="0" placeholder="Order No." required>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action-btn">
-                                                            @if ($count >= 1)
-                                                            <a href="javascript:void(0)" class="text-primary edit delNewRowTbl">
-                                                                <i class="ti ti-minus fs-5"></i>
-                                                            </a>
-                                                            @endif
-                                                        </div>
-                                                    </td>
-
-
-                                                </tr>
-                                                @endforeach
-                                                @else
-                                                <tr class="tool-row">
-                                                    <td>
-                                                        <div class="d-flex align-items-center" id="imgDiv">
-                                                            <input type="file" name="colour_image[]"
-                                                                accept="image/*" id="newImgInput"
-                                                                style="display: none;" />
-                                                            <img height="100px" width="100px" src="{{ asset('/images/no-image.svg') }}"
-                                                                alt="avatar"
-                                                                style="width: 100%; cursor: pointer;background:#ddd"
-                                                                id="newImg">
-                                                        </div>
-                                                    </td>
-
-                                                    <td>
-                                                        <input type="text" name="colour_name[]" class="form-control" placeholder="Colour Title" required>
-                                                    </td>
-
-
-                                                    <td>
-                                                        <input type="number" name="order_no[]" class="form-control" placeholder="Order No." min="0" required>
-                                                    </td>
-                                                    <td>
-                                                        <div class="action-btn"></div>
-                                                    </td>
-                                                </tr>
-                                                @endif
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
 
 
                 <div class="row">
@@ -582,7 +398,7 @@
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <div class="file_choose_icon">
-                                                <img src="{{ get_site_image_src('aviva', !empty($content['image5']) ? $content['image5'] : '') }}"
+                                                <img src="{{ get_site_image_src('hardscapes', !empty($content['image5']) ? $content['image5'] : '') }}"
                                                     alt="matdash-img" class="img-fluid ">
                                             </div>
                                             <p class="mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
@@ -626,7 +442,7 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5>Product Designs</h5>
+                                    <h5>Product Spaces</h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -647,7 +463,7 @@
                                             </thead>
                                             <tbody id="toolRepeater">
                                                 @php
-                                                $product_sizes = isset($row) ? getDesign($row->id) : [];
+                                                $product_sizes = isset($row) ? getHardGallery($row->id) : [];
                                                 $count = 1;
                                                 @endphp
 
@@ -657,24 +473,24 @@
 
                                                     <td>
                                                         <div class="d-flex align-items-center" id="imgDiv">
-                                                            <input type="file" name="size_image[]"
+                                                            <input type="file" name="gallery_image[]"
                                                                 accept="image/*" id="newImgInput"
                                                                 style="display: none;" />
-                                                            <img src="{{ get_site_image_src('aviva', !empty($size->size_image) ? $size->size_image : '') }}"
+                                                            <img src="{{ get_site_image_src('hardscapes', !empty($size->cover_image) ? $size->cover_image : '') }}"
                                                                 alt="avatar" class=""
                                                                 style="width: 60%; cursor: pointer;background:#ddd"
                                                                 id="newImg">
 
                                                         </div>
                                                     </td>
-                                                    <input type="hidden" name="size_id[]" value="{{ $size->id }}">
+                                                    <input type="hidden" name="gallery_id[]" value="{{ $size->id }}">
                                                     <td>
-                                                        <input type="text" name="size_name[]" class="form-control" value="{{ $size->title }}" placeholder="Size Title" required>
+                                                        <input type="text" name="gallery_name[]" class="form-control" value="{{ $size->title }}" placeholder="Size Title" required>
                                                     </td>
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" value="{{ $size->order_no }}" min="0" placeholder="Order No." required>
+                                                        <input type="number" name="g_order_no[]" class="form-control" value="{{ $size->order_no }}" min="0" placeholder="Order No." required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn">
@@ -693,7 +509,7 @@
                                                 <tr class="tool-row">
                                                     <td>
                                                         <div class="d-flex align-items-center" id="imgDiv">
-                                                            <input type="file" name="size_image[]"
+                                                            <input type="file" name="gallery_image[]"
                                                                 accept="image/*" id="newImgInput"
                                                                 style="display: none;" />
                                                             <img height="100px" width="100px" src="{{ asset('/images/no-image.svg') }}"
@@ -704,12 +520,12 @@
                                                     </td>
 
                                                     <td>
-                                                        <input type="text" name="size_name[]" class="form-control" placeholder="Size Title" required>
+                                                        <input type="text" name="gallery_name[]" class="form-control" placeholder=" Title" required>
                                                     </td>
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" placeholder="Order No." min="0" required>
+                                                        <input type="number" name="g_order_no[]" class="form-control" placeholder="Order No." min="0" required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn"></div>
@@ -744,7 +560,7 @@
     </div>
 </form>
 @else
-{!! breadcrumb('Aviva Pools', url('admin/aviva/add/')) !!}
+{!! breadcrumb('Hardscapes', url('admin/hardscapes/add/')) !!}
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -756,7 +572,6 @@
                             <th>Sr#</th>
                             <th>Main Image</th>
                             <th>Name</th>
-                            <th>Available</th>
 
                             <th>Status</th>
                             <th>Featured</th>
@@ -771,7 +586,7 @@
                             <td>{{ $key + 1 }}</td>
                             <td>
                                 <div class="d-flex align-items-center gap-6 crud_thumbnail_icon">
-                                    <img src="{{ get_site_image_src('aviva', !empty($row->image1) ? $row->image1 : '') }}"
+                                    <img src="{{ get_site_image_src('hardscapes', !empty($row->image1) ? $row->image1 : '') }}"
                                         width="45" class="rounded-circle" />
                                     {{-- <h6 class="mb-0"> {{ $row->title }}</h6> --}}
                                 </div>
@@ -784,7 +599,6 @@
                                 </div>
 
                             </td>
-                            <td>{!! $row->title !!}</td>
 
                             {{-- <td>{!! short_text($row->detail) !!}</td> --}}
                             <td>{!! getStatus($row->status) !!}</td>
@@ -799,13 +613,13 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center gap-3"
-                                                href="{{ url('admin/aviva/edit/' . $row->id) }}">
+                                                href="{{ url('admin/hardscapes/edit/' . $row->id) }}">
                                                 <i class="fs-4 ti ti-edit"></i>Edit
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center gap-3"
-                                                href="{{ url('admin/aviva/delete/' . $row->id) }}"
+                                                href="{{ url('admin/hardscapes/delete/' . $row->id) }}"
                                                 onclick="return confirm('Are you sure?');">
                                                 <i class="fs-4 ti ti-trash"></i>Delete
                                             </a>

@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Renaissance_model extends Model
+class Hardscapes_model extends Model
 {
     use HasFactory;
-     protected $table = 'renaissance';
+     protected $table = 'hardscapes';
     protected $fillable = [
         'meta_title',
         'meta_description',
@@ -18,8 +18,8 @@ class Renaissance_model extends Model
         'heading',
         'delivery_time',
         'detail',
-        'sec1_heading',
-        'sec2_heading',
+        'price',
+        'qty',
         'image1',
         'image2',
         'description',
@@ -29,7 +29,7 @@ class Renaissance_model extends Model
         'featured',
         'slug',
         'd_status',
-        'content',
+         'content',
 
 
 

@@ -27,8 +27,28 @@ class Renaissance extends Controller
         $input = $request->all();
 
         if ($input) {
-            $data = array();
+            $content  = $request->all();
 
+
+
+
+
+
+
+
+            $data = [
+                'slug' => checkSlug(Str::slug($input['name'], '-'), 'renaissance'),
+                'meta_title' => $input['meta_title'] ?? '',
+                'meta_description' => $input['meta_description'] ?? '',
+                'meta_keywords' => $input['meta_keywords'] ?? '',
+                'name' => $input['name'] ?? '',
+                'sec1_heading' => $input['sec1_heading'] ?? '',
+                'sec2_heading' => $input['sec2_heading'] ?? '',
+                'description' => $input['description'] ?? '',
+                'status' => !empty($input['status']) ? 1 : 0,
+                'featured' => !empty($input['featured']) ? 1 : 0,
+                'content' => json_encode($content),
+            ];
 
 
             for ($i = 1; $i <= 10; $i++) {
@@ -49,42 +69,12 @@ class Renaissance extends Controller
 
 
 
-            if (!empty($input['status'])) {
-                $data['status'] = 1;
-            } else {
-                $data['status'] = 0;
-            }
-
-            if (!empty($input['featured'])) {
-                $data['featured'] = 1;
-            } else {
-                $data['featured'] = 0;
-            }
-            $data['meta_title'] = $input['meta_title'];
-            $data['meta_description'] = $input['meta_description'];
-            $data['meta_keywords'] = $input['meta_keywords'];
-            $data['name'] = $input['name'];
-            $data['sec1_heading'] = $input['sec1_heading'];
-            $data['sec2_heading'] = $input['sec2_heading'];
-            // $data['heading'] = $input['heading'];
-            // $data['delivery_time'] = $input['delivery_time'];
-            // $data['description'] = $input['description'];
-            // $data['about_return'] = $input['about_return'];
-
-
-
-            // $data['price'] = $input['price'];
-            // $data['qty'] = $input['qty'];
-            $data['slug'] = checkSlug(Str::slug($data['name'], '-'), 'renaissance');
-            $data['description'] = $input['description'];
-
-
-
-
             $id = Renaissance_model::create($data)->id;
             $this->saveGalleryRepeater($id, $input);
             $this->savefeatureRepeater($id, $input);
             $this->saveDesignRepeater($id, $input);
+            $this->saveFaqsRepeater($id, $input);
+
 
 
 
@@ -102,7 +92,8 @@ class Renaissance extends Controller
         $input = $request->all();
         // pr($input);
         if ($input) {
-            $data = array();
+            $content = json_decode($product->content, true) ?? [];
+
 
 
 
@@ -110,7 +101,6 @@ class Renaissance extends Controller
                 $field = 'image' . $i;
 
                 if ($request->hasFile($field)) {
-
                     $request->validate([
                         $field => 'mimes:png,jpg,jpeg,svg,gif,webp|max:40000'
                     ]);
@@ -118,17 +108,23 @@ class Renaissance extends Controller
                     $image = $request->file($field)->store('public/renaissance/');
 
                     if (!empty($image)) {
-                        // Old image delete karne ka logic
-                        $oldImageField = 'image' . $i;
-                        if (!empty($product->$oldImageField)) {
-                            removeImage("products/" . $product->$oldImageField);
+                        $oldImage = $content[$field] ?? null;
+                        if (!empty($oldImage)) {
+                            removeImage("renaissance/" . $oldImage);
                         }
-
-                        // New image assign karna
-                        $product->$oldImageField = basename($image);
+                        $product->$field = basename($image);
                     }
                 }
             }
+
+            $otherInputs = $request->except(array_map(fn($i) => 'image' . $i, range(1, 10)));
+
+            $explicitFields = ['status', 'featured', 'meta_title', 'meta_description', 'meta_keywords', 'name', 'title', 'description'];
+            foreach ($explicitFields as $field) {
+                unset($otherInputs[$field]);
+            }
+
+            $content = array_merge($content, $otherInputs);
 
 
 
@@ -160,6 +156,8 @@ class Renaissance extends Controller
             // $product->price = $input['price'];
             // $product->qty = $input['qty'];
             $product->slug = checkSlug(Str::slug($product->name, '-'), 'renaissance', $product->id);
+            $product->content = json_encode($content);
+
             // $product->detail = $input['detail'];
 
 
@@ -167,6 +165,8 @@ class Renaissance extends Controller
 
 
             $product->update();
+            $this->saveFaqsRepeater($product->id, $input);
+
             $this->saveGalleryRepeater($product->id, $input);
             $this->savefeatureRepeater($product->id, $input);
             $this->saveDesignRepeater($product->id, $input);
@@ -178,6 +178,10 @@ class Renaissance extends Controller
                 ->with('success', 'Content Updated Successfully');
         }
         $this->data['row'] = Renaissance_model::find($id);
+        if (!empty($this->data['row']->content)) {
+            $this->data['content'] = json_decode($this->data['row']->content, true);
+        }
+
         $this->data['enable_editor'] = true;
 
         return view('admin.renaissance.index', $this->data);
@@ -228,6 +232,53 @@ class Renaissance extends Controller
             ->whereNotIn('id', $processedIds)
             ->delete();
     }
+
+
+    public function saveFaqsRepeater($productId, $input)
+    {
+        $processedIds = [];
+
+        if (!empty($input['question'])) {
+            foreach ($input['question'] as $i => $question) {
+                $answer = $input['answer'][$i] ?? '';
+                $orderNo = $input['q_order_no'][$i] ?? 0;
+                $faqId = $input['faq_id'][$i] ?? null;
+
+
+
+                if ($faqId && is_numeric($faqId)) {
+                    // Update existing
+                    DB::table('renaissance_faqs')->where('id', $faqId)->update([
+                        'product_id' => $productId,
+                        'question' => $question,
+                        'answer' => $answer,
+                        'order_no' => $orderNo,
+                        'updated_at' => now(),
+                    ]);
+                    $processedIds[] = $faqId;
+                } else {
+
+                    $newId = DB::table('renaissance_faqs')->insertGetId([
+                        'product_id' => $productId,
+                        'question' => $question,
+                        'answer' => $answer,
+                        'order_no' => $orderNo,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                    $processedIds[] = $newId;
+                }
+            }
+        }
+
+        // Delete removed faqs
+        DB::table('renaissance_faqs')
+            ->where('product_id', $productId)
+            ->whereNotIn('id', $processedIds)
+            ->delete();
+    }
+
+
 
 
     public function savefeatureRepeater($productId, $input)

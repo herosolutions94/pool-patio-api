@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Renaissance_model extends Model
+class Stick_Built_model extends Model
 {
     use HasFactory;
-     protected $table = 'renaissance';
+     protected $table = 'stick_built';
     protected $fillable = [
         'meta_title',
         'meta_description',

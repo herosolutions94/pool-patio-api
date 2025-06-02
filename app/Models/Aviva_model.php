@@ -29,6 +29,7 @@ class Aviva_model extends Model
         'featured',
         'slug',
         'd_status',
+         'content',
 
 
 

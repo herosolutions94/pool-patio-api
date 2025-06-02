@@ -30,6 +30,8 @@ use App\Http\Controllers\admin\Services;
 use App\Http\Controllers\admin\Specialization;
 use App\Http\Controllers\admin\Aviva;
 use App\Http\Controllers\admin\Renaissance;
+use App\Http\Controllers\admin\Hardscapes;
+use App\Http\Controllers\admin\Built;
 use App\Http\Controllers\admin\Color;
 use App\Http\Controllers\admin\Team;
 use App\Http\Controllers\Controller;
@@ -242,9 +244,23 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/renaissance/add', [Renaissance::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/renaissance/delete/{id}', [Renaissance::class, 'delete']);
 
+           /*==============================stick-built =====================================*/
+    Route::get('/admin/stick-built', [Built::class, 'index']);
+    Route::match(['GET', 'POST'], '/admin/stick-built/edit/{id}', [Built::class, 'edit']);
+    Route::match(['GET', 'POST'], '/admin/stick-built/add', [Built::class, 'add']);
+    Route::match(['GET', 'POST'], '/admin/stick-built/delete/{id}', [Built::class, 'delete']);
+
         /*==============================Aviva =====================================*/
     Route::get('/admin/colors', [Color::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/colors/edit/{id}', [Color::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/colors/add', [Color::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/colors/delete/{id}', [Color::class, 'delete']);
+
+
+    
+        /*==============================Hardscapes =====================================*/
+    Route::get('/admin/hardscapes', [Hardscapes::class, 'index']);
+    Route::match(['GET', 'POST'], '/admin/hardscapes/edit/{id}', [Hardscapes::class, 'edit']);
+    Route::match(['GET', 'POST'], '/admin/hardscapes/add', [Hardscapes::class, 'add']);
+    Route::match(['GET', 'POST'], '/admin/hardscapes/delete/{id}', [Hardscapes::class, 'delete']);
 });

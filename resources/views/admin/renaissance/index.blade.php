@@ -147,7 +147,31 @@
                                 <label for="description" class="form-label">Text</label>
                                 <textarea class="editor" name="description" required>{{ !empty($row) ? $row->description : '' }}</textarea>
                             </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="section1_btn_txt">Button 1 Text</label>
+                                        <input class="form-control" id="section1_btn_txt" type="text" name="section1_btn_txt"
+                                            placeholder="" value="{{ $content['section1_btn_txt'] ?? '' }}">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
+                                        <label class="form-label" for="section1_btn_link">Button Link URL</label>
+                                        <select name="section1_btn_link" class="form-control" required>
+                                            <option value="">Set URL</option>
 
+                                            @foreach ($all_pages as $key => $page)
+                                            <option value="{{ $key }}"
+                                                {{ !empty($content['section1_btn_link']) && $content['section1_btn_link'] == $key ? 'selected' : '' }}>
+                                                {{ $page }}
+                                            </option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
 
                         </div>
                     </div>
@@ -382,7 +406,7 @@
 
                 <div class="card-body">
                     <div class="row">
-                         <div class="mb-3">
+                        <div class="mb-3">
                             <label for="sec2_heading" class="form-label">Section Heading</label>
                             <textarea class="editor" name="sec2_heading" required>{{ !empty($row) ? $row->sec2_heading : '' }}</textarea>
                         </div>
@@ -491,7 +515,140 @@
                 </div>
 
 
-        
+
+                <div class="card-body">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="mb-3">
+                                    <label class="form-label" for="section1_text">Text</label>
+                                    <textarea id="section1_text" name="section1_text" rows="4"
+                                        class=" editor">{{ !empty($content['section1_text']) ? $content['section1_text'] : '' }}</textarea>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="card-body">
+                    <div class="row">
+                        <div class="mb-3">
+                            <label class="form-label" for="section2_heading"> Heading</label>
+                            <input class="form-control" id="section2_heading" type="text" name="section2_heading"
+                                placeholder="" value="{{ $content['section2_heading'] ?? '' }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="sec3_text" class="form-label"> Text</label>
+                            <textarea class="editor" name="sec3_text" required>{{ !empty($content['sec3_text']) ? $content['sec3_text'] : '' }}</textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>Faqs List</h5>
+                                </div>
+                                <div class="card-body">
+
+
+
+                                    <div class="table-responsive">
+                                        <table class="table text-nowrap mb-0 newTable" id="newTable">
+                                            <thead class="header-item">
+                                                <tr>
+                                                    <th width="25%"> Title</th>
+                                                    <th width="25%"> Detail</th>
+                                                    <th width="10%">Order No.</th>
+                                                    <th width="5%">
+                                                        <div class="action-btn">
+                                                            <a href="javascript:void(0)" class="text-primary edit addNewRowTbl" id="addNewRowTbl">
+                                                                <i class="ti ti-plus fs-6 fw-bold"></i>
+                                                            </a>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="toolRepeater">
+                                                @php
+                                                $faqs = isset($row) ? getFaqsResi($row->id) : [];
+                                                $count = 1;
+                                                @endphp
+
+                                                @if (countlength($faqs) > 0)
+                                                @foreach ($faqs as $colour)
+                                                <tr class="tool-row">
+
+
+                                                    <input type="hidden" name="faq_id[]" value="{{ $colour->id }}">
+                                                    <td>
+                                                        <input type="text" name="answer[]" class="form-control" value="{{ $colour->answer }}" placeholder=" Title" required>
+                                                    </td>
+
+                                                    <td>
+                                                        <textarea class="form-control" name="question[]" required>{{ $colour->question }}</textarea>
+                                                    </td>
+
+
+                                                    <td>
+                                                        <input type="number" name="q_order_no[]" class="form-control" value="{{ $colour->order_no }}" min="0" placeholder="Order No." required>
+                                                    </td>
+                                                    <td>
+                                                        <div class="action-btn">
+                                                            @if ($count >= 1)
+                                                            <a href="javascript:void(0)" class="text-primary edit delNewRowTbl">
+                                                                <i class="ti ti-minus fs-5"></i>
+                                                            </a>
+                                                            @endif
+                                                        </div>
+                                                    </td>
+
+
+                                                </tr>
+                                                @endforeach
+                                                @else
+                                                <tr class="tool-row">
+                                                    <input type="hidden" name="faq_id[]" value="">
+                                                    <td>
+                                                        <input type="text" name="answer[]" class="form-control" placeholder=" Title" required>
+                                                    </td>
+                                                    <td>
+                                                        <textarea class="form-control" name="question[]" required></textarea>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="q_order_no[]" class="form-control" placeholder="Order No." min="0" required>
+                                                    </td>
+                                                    <td>
+                                                        <div class="action-btn">
+                                                            <a href="javascript:void(0)" class="text-primary edit delNewRowTbl">
+                                                                <i class="ti ti-minus fs-5"></i>
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+
+
 
 
 

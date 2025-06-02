@@ -1794,6 +1794,78 @@ if (! function_exists('getColGallery')) {
     }
 }
 
+if (! function_exists('getDesignListStick')) {
+    function getDesignListStick(int $product_id)
+    {
+        return DB::table('stick_built_designs')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getFeaturesStick')) {
+    function getFeaturesStick(int $product_id)
+    {
+        return DB::table('stick_built_feature')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getGalleryStick')) {
+    function getGalleryStick(int $product_id)
+    {
+        return DB::table('stick_built_gallery')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getSpecifyHardscapes')) {
+    function getSpecifyHardscapes(int $product_id)
+    {
+        return DB::table('hardscapes_specifiy')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+
+if (! function_exists('getHardGallery')) {
+    function getHardGallery(int $product_id)
+    {
+        return DB::table('hardscapes_gallery')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+
+if (! function_exists('getFaqsStick')) {
+    function getFaqsStick(int $product_id)
+    {
+        return DB::table('stick_built_faqs')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
+if (! function_exists('getFaqsResi')) {
+    function getFaqsResi(int $product_id)
+    {
+        return DB::table('renaissance_faqs')
+            ->where('product_id', $product_id)
+            ->orderBy('order_no', 'asc')
+            ->get();
+    }
+}
+
 if (! function_exists('getFeatures')) {
     function getFeatures(int $product_id)
     {
