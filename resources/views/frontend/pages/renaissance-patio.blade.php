@@ -13,6 +13,13 @@
 <section class="patio_sec">
     <div class="contain">
         <div class="listing">
+             @foreach($renaissances as $renaissance)
+            @php
+            $content = json_decode($renaissance->content, true);
+            @endphp
+        
+
+
             <div class="flex" data-aos="fade-up"><a href="patio-details.php"></a>
                 <div class="image">
                     <img src="assets/images/p1.webp" alt="">
@@ -93,17 +100,21 @@
             </div>
             <div class="flex" data-aos="fade-up"><a href="patio-details.php"></a>
                 <div class="image">
-                    <img src="assets/images/p7.webp" alt="">
+                    <img src="{{ get_site_image_src('renaissance', $renaissance['image1'] ?? 'default.jpg') }}" alt="">
                 </div>
                 <div class="inner">
-                    <h3>TerraLuxe Canopy</h3>
-                    <p>A canvas-style patio cover with bold colors and elegant curves. Ideal for creating a resort-like
-                        feel in your own backyard.</p>
+                     <h3>{{$renaissance->name}}</h3>
+                    {!! $content['short_text'] ?? '' !!}
                     <div class="btn_blk">
                         <a href="patio-details.php" class="site_btn">Read More</a>
                     </div>
                 </div>
             </div>
+
+            @endforeach
+
+           
+           
         </div>
     </div>
 </section>

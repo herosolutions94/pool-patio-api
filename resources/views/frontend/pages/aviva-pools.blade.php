@@ -14,17 +14,20 @@
 <section class="model_sec">
     <div class="contain">
         <div class="flex" data-aos="fade-up">
-            <div class="col">
+             @foreach($avivas as $aviva)
+          
+             <div class="col">
                 <div class="inner">
                     <a href="pool-details.php" class="image">
-                        <img src="assets/images/m1.webp" alt="" class="show_second">
-                        <img src="assets/images/aviva1.webp" alt="" class="show_main">
+                        <img src="{{ get_site_image_src('aviva', $aviva['image2'] ?? 'default.jpg') }}" alt="" class="show_second">
+                        <img src="{{ get_site_image_src('aviva', $aviva['image1'] ?? 'default.jpg') }}" alt="" class="show_main">
                     </a>
                     <div class="txt">
-                        <h4>THE COSMOPOLITAN</h4>
-                        <h5>Available in 23′</h5>
-                        <p>Crafted from a seamless union of water, earth, and nature, The Cosmopolitan epitomizes an
-                            extraordinary design.</p>
+
+                        <h4>{{$aviva->name}}</h4>
+                        <h5>{{$aviva->title}}</h5>
+                        {!! $aviva->description ?? '' !!}
+
                         <div class="btn_blk">
                             <a href="/pool-details" class="site_btn block">Explore The Limitless™</a>
                         </div>
@@ -229,6 +232,12 @@
                     </div>
                 </div>
             </div>
+            
+
+            @endforeach
+
+           
+         
         </div>
     </div>
 </section>
