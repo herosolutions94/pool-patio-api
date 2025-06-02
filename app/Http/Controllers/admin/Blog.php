@@ -57,9 +57,9 @@ class Blog extends Controller
             // $data['tags']=$input['tags'];
             $data['title'] = $input['title'];
             $data['slug'] = checkSlug(Str::slug($data['title'], '-'), 'blog');
-            $data['short_detail'] = $input['short_detail'];
+            // $data['short_detail'] = $input['short_detail'];
             $data['detail'] = $input['detail'];
-            $data['author'] = $input['author'];
+            // $data['author'] = $input['author'];
             $data['category'] = $input['category'];
             // pr($data);
             $id = Blog_model::create($data);
@@ -110,9 +110,9 @@ class Blog extends Controller
             // $blog->tags=$input['tags'];
             $blog->title = $input['title'];
             $blog->slug = checkSlug(Str::slug($blog->title, '-'), 'blog', $blog->id);
-            $blog->short_detail = $input['short_detail'];
+            // $blog->short_detail = $input['short_detail'];
             $blog->detail = $input['detail'];
-            $blog->author = $input['author'];
+            // $blog->author = $input['author'];
             $blog->category = $input['category'];
             // pr($data);
             $blog->update();

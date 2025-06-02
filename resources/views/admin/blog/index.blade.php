@@ -99,7 +99,7 @@
                                 <div class="card-body p-4">
                                     <h4 class="card-title">Details Block</h4>
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="author" class="form-label">Author</label>
                                                 <input type="text" class="form-control" name="author"
@@ -111,7 +111,7 @@
                                                 <label for="short_detail" class="form-label">Short Description</label>
                                                 <textarea class="form-control" name="short_detail">{{ !empty($row) ? $row->short_detail : '' }}</textarea>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-md-12">
                                             <div class="mb-3">
                                                 <label for="detail" class="form-label">Details</label>
