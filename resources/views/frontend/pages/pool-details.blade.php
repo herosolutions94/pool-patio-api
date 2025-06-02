@@ -5,40 +5,24 @@
 @section('content')
 
 
-<section class="banner_pool sm_banner" style="background:url(./assets/images/aviva1.webp)"></section>
+<section class="banner_pool sm_banner" style="background: url('{{ get_site_image_src('aviva', $aviva['image1'] ?? 'default.jpg') }}'); background-size: cover; background-position: center;"></section>
 <section class="detail_pool_sec">
     <div class="contain">
         <div class="cntnt text-center" data-aos="fade-up">
-            <h1>The Cosmopolitan Collection</h1>
+            <h1>{{ $content['section1_heading']}}</h1>
         </div>
         <div class="flex">
             <div class="colL" data-aos="fade-right">
                 <div class="image">
-                    <img src="assets/images/aviva1_1.webp" alt="">
+                    <img src="{{ get_site_image_src('aviva', $content_data['image3'] ?? 'default.jpg') }}" alt="">
                 </div>
             </div>
             <div class="colR" data-aos="fade-left">
                 <div class="inner">
-                    <p>As the latest jewel in the Aviva Pools collection, The COSMOPOLITAN was designed to celebrate
-                        life with family and friends.</p>
-                    <p>Embracing the celestial allure of a half-moon and the ethereal essence of an invisible edge, The
-                        Cosmopolitan embodies a harmonious fusion of water, earth, and nature. This unparalleled design
-                        stands as a testament to innovation, setting itself apart as a singular creation in the realm of
-                        composite pools worldwide.</p>
-                    <p>The flat bottom of The Cosmopolitan is perfect for both tranquil dips and lively gatherings with
-                        friends and family. Its adaptable design seamlessly integrates into challenging landscapes or
-                        deck spaces, where a pool was considered impossible.</p>
-                    <h4>All Inclusive Features</h4>
-                    <ul>
-                        <li>Infinity Edge Design</li>
-                        <li>Flat Bottom Pool</li>
-                        <li>Built-In Catch Basin</li>
-                        <li>Internal & External Steps</li>
-                        <li>Submerged Bench Seating</li>
-                    </ul>
+                   {!! $content_data['section1_text'] ?? '' !!}
                     <div class="btn_blk">
-                        <a href="" class="site_btn">Find a Dealer</a>
-                        <a href="" class="site_btn color">Get Brochure</a>
+                        <a href="{{ $content_data['section1_btn_link']}}" class="site_btn">{{ $content_data['section1_btn_txt']}}</a>
+                        <a href="{{ $content_data['section2_btn_link']}}" class="site_btn color">{{ $content_data['section2_btn_txt']}}</a>
                     </div>
                 </div>
             </div>

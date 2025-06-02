@@ -93,34 +93,46 @@ class FrontendPages extends Controller
         $this->data['avivas'] = Aviva_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
         $this->data['cta_section'] = get_page('cta_section');
 
-       
-        return view('frontend/pages/aviva-pools',$this->data);
+
+        return view('frontend/pages/aviva-pools', $this->data);
     }
 
-     public function pool_details_page(Request $request)
+    public function pool_details_page($slug)
     {
-        $this->data['content'] = get_page('pool_details');
-        $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
+        $aviva = Aviva_model::where('slug', $slug)->where('status', 1)->firstOrFail();
+        $this->data['page_title'] = $aviva->meta_title . ' - ' . $this->data['site_settings']->site_name;
         $this->data['meta_desc'] = (object)[
-            'meta_title' => $this->data['content']['meta_title'],
-            'meta_description' => $this->data['content']['meta_description'],
-            'meta_keywords' => $this->data['content']['meta_keywords'],
+            'meta_title' => $aviva->meta_title,
+            'meta_description' => $aviva->meta_description,
+            'meta_keywords' => $aviva->meta_keywords,
             'meta_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
-            'og_title' => $this->data['content']['meta_title'],
-            'og_description' => $this->data['content']['meta_description'],
-            'meta_keywords' => $this->data['content']['meta_keywords'],
+            'og_title' => $aviva->meta_title,
+            'og_description' => $aviva->meta_description,
+            'meta_keywords' => $aviva->meta_keywords,
             'twitter_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
 
-        $this->data['renaissances'] = Renaissance_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
+        $this->data['aviva'] = $aviva;
+        $this->data['content_data'] = json_decode($this->data['aviva']->content, true);
+        $this->data['specification'] = getSpecify($aviva->id);
+        $this->data['colors'] = getColours($aviva->id);
+        $this->data['designs'] = getDesign($aviva->id);
+        $this->data['content'] = get_page('pool_details');
+
+
+
+
+
+
+
         $this->data['cta_section'] = get_page('cta_section');
 
-        return view('frontend/pages/renaissance-patio', $this->data);
+        return view('frontend/pages/pool-details', $this->data);
     }
 
-     public function patio_details_page(Request $request)
+    public function patio_details_page(Request $request)
     {
         $this->data['content'] = get_page('patio_details');
         $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
@@ -139,7 +151,7 @@ class FrontendPages extends Controller
 
         $this->data['cta_section'] = get_page('cta_section');
         $this->data['sticks_built'] = Stick_Built_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
-                $this->data['cta_section'] = get_page('cta_section');
+        $this->data['cta_section'] = get_page('cta_section');
 
         return view('frontend/pages/stick-built', $this->data);
     }
@@ -181,12 +193,10 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-                $this->data['cta_section'] = get_page('cta_section');
-
-       
-        return view('frontend/pages/stick-built',$this->data);
+        $this->data['cta_section'] = get_page('cta_section');
 
 
+        return view('frontend/pages/stick-built', $this->data);
     }
 
     public function request_quote_page(Request $request)
@@ -210,12 +220,10 @@ class FrontendPages extends Controller
         $this->data['job_opportunities'] = Job_opportunities_model::orderBy('id', 'ASC')->where('status', '1')->get();
         $this->data['testimonials'] = Testimonial_model::orderBy('id', 'ASC')->where('status', '1')->get();
         $this->data['cta_section'] = get_page('cta_section');
-        return view('frontend/pages/request-quote',$this->data);
-
-
+        return view('frontend/pages/request-quote', $this->data);
     }
 
- 
+
     public function faqs_page(Request $request)
     {
         $this->data['content'] = get_page('faqs');
@@ -232,13 +240,13 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-        
+
         $this->data['cta_section'] = get_page('cta_section');
 
-         return view('frontend/pages/faqs',$this->data);
+        return view('frontend/pages/faqs', $this->data);
     }
 
-    
+
 
     public function hardscapes_page(Request $request)
     {
@@ -257,14 +265,12 @@ class FrontendPages extends Controller
 
         ];
         $this->data['cta_section'] = get_page('cta_section');
-        
-
-                return view('frontend/pages/hardscapes',$this->data);
 
 
+        return view('frontend/pages/hardscapes', $this->data);
     }
 
-    
+
 
     public function colors_page(Request $request)
     {
@@ -364,7 +370,7 @@ class FrontendPages extends Controller
         }
         $this->data['cta_section'] = get_page('cta_section');
 
-        return view('frontend/pages/blog',$this->data);
+        return view('frontend/pages/blog', $this->data);
     }
     public function blog_details_page(Request $request, $slug)
     {
@@ -374,8 +380,7 @@ class FrontendPages extends Controller
             $this->data['blog_post']->cat_name = !empty($this->data['blog_post']->category_row) ? $this->data['blog_post']->category_row->name : '';
             $this->data['blog_post']->created_date = format_date($this->data['blog_post']->created_at, 'd M, Y');
         }
-                $this->data['cta_section'] = get_page('cta_section');
-                        return view('frontend/pages/blog-details',$this->data);
-
+        $this->data['cta_section'] = get_page('cta_section');
+        return view('frontend/pages/blog-details', $this->data);
     }
 }

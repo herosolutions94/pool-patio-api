@@ -346,7 +346,7 @@
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" value="{{ $cover->order_no }}" min="0" placeholder="Order No." required>
+                                                        <input type="number" name="co_order_no[]" class="form-control" value="{{ $cover->order_no }}" min="0" placeholder="Order No." required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn">
@@ -385,7 +385,7 @@
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" placeholder="Order No." min="0" required>
+                                                        <input type="number" name="co_order_no[]" class="form-control" placeholder="Order No." min="0" required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn"></div>
@@ -517,7 +517,7 @@
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" value="{{ $colour->order_no }}" min="0" placeholder="Order No." required>
+                                                        <input type="number" name="c_order_no[]" class="form-control" value="{{ $colour->order_no }}" min="0" placeholder="Order No." required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn">
@@ -552,7 +552,7 @@
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" placeholder="Order No." min="0" required>
+                                                        <input type="number" name="c_order_no[]" class="form-control" placeholder="Order No." min="0" required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn"></div>
@@ -674,7 +674,7 @@
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" value="{{ $size->order_no }}" min="0" placeholder="Order No." required>
+                                                        <input type="number" name="s_order_no[]" class="form-control" value="{{ $size->order_no }}" min="0" placeholder="Order No." required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn">
@@ -709,7 +709,7 @@
 
 
                                                     <td>
-                                                        <input type="number" name="order_no[]" class="form-control" placeholder="Order No." min="0" required>
+                                                        <input type="number" name="s_order_no[]" class="form-control" placeholder="Order No." min="0" required>
                                                     </td>
                                                     <td>
                                                         <div class="action-btn"></div>

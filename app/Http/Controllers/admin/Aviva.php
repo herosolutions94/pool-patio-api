@@ -77,7 +77,7 @@ class Aviva extends Controller
                 'status' => !empty($input['status']) ? 1 : 0,
                 'featured' => !empty($input['featured']) ? 1 : 0,
 
-                
+
             ];
 
             for ($i = 1; $i <= 10; $i++) {
@@ -138,17 +138,23 @@ class Aviva extends Controller
                     ]);
 
                     $image = $request->file($field)->store('public/aviva/');
+                    $filename = basename($image);
 
                     if (!empty($image)) {
-                        $oldImage = $content[$field] ?? null;
-                        if (!empty($oldImage)) {
-                            removeImage("aviva/" . $oldImage);
+                      
+                        if ($i == 1 || $i == 2) {
+                            $oldImage = $product->$field ?? null;
+                            if (!empty($oldImage)) {
+                                removeImage("aviva/" . $oldImage);
+                            }
+                            $product->$field = $filename; 
+                        } else {
+                            $oldImage = $content[$field] ?? null;
+                            if (!empty($oldImage)) {
+                                removeImage("aviva/" . $oldImage);
+                            }
+                            $content[$field] = $filename; 
                         }
-                        if ($i == 1) {
-                            $product->image1 = basename($image);
-                        }
-
-                        $product->$field = basename($image);
                     }
                 }
             }
@@ -223,7 +229,7 @@ class Aviva extends Controller
                 if ($coverId) {
                     DB::table('aviva_specifications')->where('id', $coverId)->update([
                         'title' => $cover_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['co_order_no'][$i] ?? 0,
                         'cover_image' => $imageName,
                         'detail' => $detail,
                         'updated_at' => now(),
@@ -233,7 +239,7 @@ class Aviva extends Controller
                     $newId = DB::table('aviva_specifications')->insertGetId([
                         'product_id' => $productId,
                         'title' => $cover_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['co_order_no'][$i] ?? 0,
                         'cover_image' => $imageName,
                         'detail' => $detail,
                         'created_at' => now(),
@@ -275,7 +281,7 @@ class Aviva extends Controller
                 if ($colourId) {
                     DB::table('aviva_colours')->where('id', $colourId)->update([
                         'title' => $colour_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['c_order_no'][$i] ?? 0,
                         'colour_image' => $imageName,
 
                         'updated_at' => now(),
@@ -285,7 +291,7 @@ class Aviva extends Controller
                     $newId = DB::table('aviva_colours')->insertGetId([
                         'product_id' => $productId,
                         'title' => $colour_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['c_order_no'][$i] ?? 0,
                         'colour_image' => $imageName,
 
                         'created_at' => now(),
@@ -369,7 +375,7 @@ class Aviva extends Controller
                 if ($sizeId) {
                     DB::table('aviva_designs')->where('id', $sizeId)->update([
                         'title' => $size_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['s_order_no'][$i] ?? 0,
                         'size_image' => $imageName,
 
                         'updated_at' => now(),
@@ -379,7 +385,7 @@ class Aviva extends Controller
                     $newId = DB::table('aviva_designs')->insertGetId([
                         'product_id' => $productId,
                         'title' => $size_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['s_order_no'][$i] ?? 0,
                         'size_image' => $imageName,
 
                         'created_at' => now(),

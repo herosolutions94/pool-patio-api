@@ -70,22 +70,22 @@ Route::get('/admin/login', [Index::class, 'admin_login'])->middleware('admin_log
 Route::post('/admin/login', [Index::class, 'login'])->middleware('admin_logged_in');
 Route::get('/admin/logout', [Index::class, 'logout']);
 
-    /*==============================Frontend =====================================*/
+/*==============================Frontend =====================================*/
 
 
-    Route::match(['GET', 'POST'], '/', [FrontendPages::class, 'home_page']);
-    Route::match(['GET', 'POST'], '/about', [FrontendPages::class, 'about_page']);
-    Route::match(['GET', 'POST'], '/aviva-pools', [FrontendPages::class, 'aviva_pools_page']);
-    Route::match(['GET', 'POST'], '/renaissance-patio', [FrontendPages::class, 'renaissance_patio_page']);
-    Route::match(['GET', 'POST'], '/stick-built', [FrontendPages::class, 'stick_built_page']);
-    Route::match(['GET', 'POST'], '/hardscapes', [FrontendPages::class, 'hardscapes_page']);
-    Route::match(['GET', 'POST'], '/colors', [FrontendPages::class, 'colors_page']);
-    Route::match(['GET', 'POST'], '/request-quote', [FrontendPages::class, 'request_quote_page']);
-    Route::match(['GET', 'POST'], '/faqs', [FrontendPages::class, 'faqs_page']);
-    Route::match(['GET', 'POST'], '/blog', [FrontendPages::class, 'blog_page']);
-    Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
-    Route::match(['GET', 'POST'], '/pool-details', [FrontendPages::class, 'pool_details_page']);
-    Route::match(['GET', 'POST'], '/patio-details', [FrontendPages::class, 'patio_details_page']);
+Route::match(['GET', 'POST'], '/', [FrontendPages::class, 'home_page']);
+Route::match(['GET', 'POST'], '/about', [FrontendPages::class, 'about_page']);
+Route::match(['GET', 'POST'], '/aviva-pools', [FrontendPages::class, 'aviva_pools_page']);
+Route::match(['GET', 'POST'], '/renaissance-patio', [FrontendPages::class, 'renaissance_patio_page']);
+Route::match(['GET', 'POST'], '/stick-built', [FrontendPages::class, 'stick_built_page']);
+Route::match(['GET', 'POST'], '/hardscapes', [FrontendPages::class, 'hardscapes_page']);
+Route::match(['GET', 'POST'], '/colors', [FrontendPages::class, 'colors_page']);
+Route::match(['GET', 'POST'], '/request-quote', [FrontendPages::class, 'request_quote_page']);
+Route::match(['GET', 'POST'], '/faqs', [FrontendPages::class, 'faqs_page']);
+Route::match(['GET', 'POST'], '/blog', [FrontendPages::class, 'blog_page']);
+Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
+Route::get('/pool-details/{slug}', [FrontendPages::class, 'pool_details_page'])->name('pool.details');
+Route::match(['GET', 'POST'], '/patio-details', [FrontendPages::class, 'patio_details_page']);
 
 
 Route::middleware(['is_admin'])->group(function () {
@@ -134,7 +134,7 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/categories/edit/{id}', [Categories::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/categories/delete/{id}', [Categories::class, 'delete']);
 
-    
+
 
 
     /*==============================Locations =====================================*/
@@ -225,7 +225,7 @@ Route::middleware(['is_admin'])->group(function () {
 
 
 
-  
+
 
 
 
@@ -247,37 +247,36 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/subscribers/delete/{id}', [Subscribers::class, 'delete']);
     Route::match(['GET', 'POST'], '/admin/subscribers/csv_export', [Subscribers::class, 'csv_export']);
 
-        /*==============================Aviva =====================================*/
+    /*==============================Aviva =====================================*/
     Route::get('/admin/aviva', [Aviva::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/aviva/edit/{id}', [Aviva::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/aviva/add', [Aviva::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/aviva/delete/{id}', [Aviva::class, 'delete']);
 
 
-       /*==============================Aviva =====================================*/
+    /*==============================Aviva =====================================*/
     Route::get('/admin/renaissance', [Renaissance::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/renaissance/edit/{id}', [Renaissance::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/renaissance/add', [Renaissance::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/renaissance/delete/{id}', [Renaissance::class, 'delete']);
 
-           /*==============================stick-built =====================================*/
+    /*==============================stick-built =====================================*/
     Route::get('/admin/stick-built', [Built::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/stick-built/edit/{id}', [Built::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/stick-built/add', [Built::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/stick-built/delete/{id}', [Built::class, 'delete']);
 
-        /*==============================Aviva =====================================*/
+    /*==============================Aviva =====================================*/
     Route::get('/admin/colors', [Color::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/colors/edit/{id}', [Color::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/colors/add', [Color::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/colors/delete/{id}', [Color::class, 'delete']);
 
 
-    
-        /*==============================Hardscapes =====================================*/
+
+    /*==============================Hardscapes =====================================*/
     Route::get('/admin/hardscapes', [Hardscapes::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/hardscapes/edit/{id}', [Hardscapes::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/hardscapes/add', [Hardscapes::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/hardscapes/delete/{id}', [Hardscapes::class, 'delete']);
-
 });
