@@ -295,7 +295,7 @@
                                     </div>
 
                                     <div class="table-responsive">
-                                        <table class="table text-nowrap mb-0 newTable" id="newTable">
+                                        <table class="table text-nowrap mb-0 newTable" id="newTable" isCkeditor="true">
                                             <thead class="header-item">
                                                 <tr>
                                                     <th width="15%"> Image</th>
@@ -319,7 +319,11 @@
                                                 @endphp
 
                                                 @if (countlength($cover_material) > 0)
+                                                @php
+                                                $sec1s_count = 1;
+                                                @endphp
                                                 @foreach ($cover_material as $cover)
+
                                                 <tr class="tool-row">
 
                                                     <td>
@@ -339,7 +343,7 @@
                                                         <input type="text" name="cover_name[]" class="form-control" value="{{ $cover->title }}" placeholder=" Title" required>
                                                     </td>
                                                     <td>
-                                                        <textarea class="editor" name="detail[]" required>{{ $cover->detail }}</textarea>
+                                                        <textarea class="editor" name="detail[]" id="sec1_txt" required>{{ $cover->detail }}</textarea>
 
 
                                                     </td>
@@ -360,6 +364,9 @@
 
 
                                                 </tr>
+                                                @php
+                                                $sec1s_count++;
+                                                @endphp
                                                 @endforeach
                                                 @else
                                                 <tr class="tool-row">
@@ -379,7 +386,7 @@
                                                         <input type="text" name="cover_name[]" class="form-control" placeholder="Cover Title" required>
                                                     </td>
                                                     <td>
-                                                        <textarea class="editor" name="detail[]" required></textarea>
+                                                        <textarea class="editor" name="detail[]" id="sec1_txt" required></textarea>
 
                                                     </td>
 

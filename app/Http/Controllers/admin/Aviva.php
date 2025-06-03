@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Aviva_model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\AvivaSpecification_model; 
+use Illuminate\Support\Facades\Storage;
 
 class Aviva extends Controller
 {
@@ -254,6 +256,88 @@ class Aviva extends Controller
             ->where('product_id', $productId)
             ->whereNotIn('id', $processedIds)
             ->delete();
+    }
+
+
+    public function manageSpecifications(Request $request, $productId)
+    {
+        has_access(17); // adjust access ID as needed
+
+        $this->data['product'] = Aviva_model::findOrFail($productId);
+
+        $this->data['specifications'] = AvivaSpecification_model::where('product_id', $productId)
+            ->orderBy('order_no')
+            ->get();
+
+        $this->data['specification'] = null;
+
+        if ($request->has('id')) {
+            $this->data['specification'] = AvivaSpecification_model::where('id', $request->query('id'))
+                ->where('product_id', $productId)
+                ->first();
+        }
+
+        return view('admin.aviva.specification', $this->data);
+    }
+
+    public function saveSpecification(Request $request, $productId)
+    {
+        has_access(17);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'detail' => 'required|string',
+            'order_no' => 'nullable|integer|min:0',
+            'cover_image' => 'nullable|image|max:2048',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $specificationId = $request->input('specification_id');
+
+        if ($specificationId) {
+            $spec = AvivaSpecification_model::where('id', $specificationId)->where('product_id', $productId)->firstOrFail();
+        } else {
+            $spec = new AvivaSpecification_model();
+            $spec->product_id = $productId;
+        }
+
+        $spec->title = $request->title;
+        $spec->detail = $request->detail;
+        $spec->order_no = $request->order_no ?? 0;
+        $spec->status = $request->has('status') ? 1 : 0;
+
+        if ($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            // Delete old image if exists
+            if ($spec->cover_image && Storage::disk('public')->exists('aviva/' . $spec->cover_image)) {
+                Storage::disk('public')->delete('aviva/' . $spec->cover_image);
+            }
+
+            $imageName = time() . '_' . uniqid() . '.' . $request->cover_image->getClientOriginalExtension();
+            $request->cover_image->storeAs('aviva', $imageName, 'public');
+            $spec->cover_image = $imageName;
+        }
+
+        $spec->save();
+
+        return redirect()->route('aviva.specifications.manage', ['productId' => $productId])
+            ->with('success', 'Specification saved successfully.');
+    }
+
+    public function deleteSpecification($id)
+    {
+        has_access(17);
+
+        $spec = AvivaSpecification_model::findOrFail($id);
+
+        if ($spec->cover_image && Storage::disk('public')->exists('aviva/' . $spec->cover_image)) {
+            Storage::disk('public')->delete('aviva/' . $spec->cover_image);
+        }
+
+        $productId = $spec->product_id;
+        $spec->delete();
+
+        return redirect()->route('aviva.specifications.manage', ['productId' => $productId])
+            ->with('success', 'Specification deleted successfully.');
     }
 
 

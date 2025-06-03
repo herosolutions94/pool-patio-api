@@ -255,6 +255,8 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/aviva/edit/{id}', [Aviva::class, 'edit']);
     Route::match(['GET', 'POST'], '/admin/aviva/add', [Aviva::class, 'add']);
     Route::match(['GET', 'POST'], '/admin/aviva/delete/{id}', [Aviva::class, 'delete']);
+    Route::get('/admin/aviva/specifications/manage/{productId}', [Aviva::class, 'manageSpecifications'])
+    ->name('aviva.specifications.manage');
 
 
     /*==============================Aviva =====================================*/
