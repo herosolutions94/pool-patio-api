@@ -45,19 +45,19 @@
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'members' ? 'active' : '' }}"
-                        href="{{ url('admin/members') }}" aria-expanded="false">
-                        <iconify-icon icon="lucide:users-round"></iconify-icon>
-                        <span class="hide-menu">Clients</span>
-                    </a>
+                href="{{ url('admin/members') }}" aria-expanded="false">
+                <iconify-icon icon="lucide:users-round"></iconify-icon>
+                <span class="hide-menu">Clients</span>
+                </a>
                 </li> --}}
 
                 {{-- <li class="sidebar-item">
                             <a class="sidebar-link {{ $admin_page == 'agents' ? 'active' : '' }}"
-                                href="{{ url('admin/agents') }}" aria-expanded="false">
-                                <iconify-icon icon="lucide:users"></iconify-icon>
-                                <span class="hide-menu">Agents</span>
-                            </a>
-                        </li> --}}
+                href="{{ url('admin/agents') }}" aria-expanded="false">
+                <iconify-icon icon="lucide:users"></iconify-icon>
+                <span class="hide-menu">Agents</span>
+                </a>
+                </li> --}}
 
 
                 <li class="nav-small-cap">
@@ -70,6 +70,14 @@
                         href="{{ url('admin/contact') }}" aria-expanded="false">
                         <iconify-icon icon="tabler:message-user"></iconify-icon>
                         <span class="hide-menu">Contact Messages</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ $admin_page == 'request-quote' ? 'active' : '' }}"
+                        href="{{ url('admin/request-quote') }}" aria-expanded="false">
+                        <iconify-icon icon="tabler:request-quote"></iconify-icon>
+                        <span class="hide-menu">Request Quotes</span>
                     </a>
                 </li>
 
@@ -101,45 +109,45 @@
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link has-arrow {{ $admin_page == 'locations' || $admin_page == 'specialization' || $admin_page == 'job_type' || $admin_page == 'jobs' ? 'active' : '' }}"
-                        href="javascript:void(0)" aria-expanded="false">
-                        <iconify-icon icon="ooui:articles-rtl"></iconify-icon>
-                        <span class="hide-menu">Manage Jobs</span>
-                    </a>
-                    <ul aria-expanded="false"
-                        class="collapse first-level {{ $admin_page == 'locations' || $admin_page == 'specialization' || $admin_page == 'job_type' || $admin_page == 'jobs' ? 'in' : '' }}">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'locations' ? 'active' : '' }}"
-                                href="{{ url('admin/locations') }}">
-                                <span class="icon-small"></span>Locations
+                href="javascript:void(0)" aria-expanded="false">
+                <iconify-icon icon="ooui:articles-rtl"></iconify-icon>
+                <span class="hide-menu">Manage Jobs</span>
+                </a>
+                <ul aria-expanded="false"
+                    class="collapse first-level {{ $admin_page == 'locations' || $admin_page == 'specialization' || $admin_page == 'job_type' || $admin_page == 'jobs' ? 'in' : '' }}">
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'locations' ? 'active' : '' }}"
+                            href="{{ url('admin/locations') }}">
+                            <span class="icon-small"></span>Locations
 
-                            </a>
-                        </li>
+                        </a>
+                    </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'specialization' ? 'active' : '' }}"
-                                href="{{ url('admin/specialization') }}">
-                                <span class="icon-small"></span>Specialization
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'specialization' ? 'active' : '' }}"
+                            href="{{ url('admin/specialization') }}">
+                            <span class="icon-small"></span>Specialization
 
-                            </a>
-                        </li>
+                        </a>
+                    </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'job_type' ? 'active' : '' }}"
-                                href="{{ url('admin/job_type') }}">
-                                <span class="icon-small"></span>Job Types
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'job_type' ? 'active' : '' }}"
+                            href="{{ url('admin/job_type') }}">
+                            <span class="icon-small"></span>Job Types
 
-                            </a>
-                        </li>
+                        </a>
+                    </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'jobs' ? 'active' : '' }}"
-                                href="{{ url('admin/jobs') }}">
-                                <span class="icon-small"></span>Jobs
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'jobs' ? 'active' : '' }}"
+                            href="{{ url('admin/jobs') }}">
+                            <span class="icon-small"></span>Jobs
 
-                            </a>
-                        </li>
+                        </a>
+                    </li>
 
-                    </ul>
+                </ul>
                 </li> --}}
 
                 <li class="sidebar-item">
@@ -174,71 +182,71 @@
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link has-arrow {{ $admin_page == 'executive' || $admin_page == 'directors' || $admin_page == 'team' ? 'active' : '' }}"
-                        href="javascript:void(0)" aria-expanded="false">
-                        <iconify-icon icon="lucide:users"></iconify-icon>
-                        <span class="hide-menu">Our Team</span>
-                    </a>
-                    <ul aria-expanded="false"
-                        class="collapse first-level {{ $admin_page == 'executive' || $admin_page == 'directors' || $admin_page == 'team' ? 'in' : '' }}">
+                href="javascript:void(0)" aria-expanded="false">
+                <iconify-icon icon="lucide:users"></iconify-icon>
+                <span class="hide-menu">Our Team</span>
+                </a>
+                <ul aria-expanded="false"
+                    class="collapse first-level {{ $admin_page == 'executive' || $admin_page == 'directors' || $admin_page == 'team' ? 'in' : '' }}">
 
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'executive' ? 'active' : '' }}"
-                                href="{{ url('admin/executive') }}" aria-expanded="false">
-                                <iconify-icon icon="lucide:users"></iconify-icon>
-                                <span class="hide-menu">Executive Team Members</span>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'executive' ? 'active' : '' }}"
+                            href="{{ url('admin/executive') }}" aria-expanded="false">
+                            <iconify-icon icon="lucide:users"></iconify-icon>
+                            <span class="hide-menu">Executive Team Members</span>
 
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'directors' ? 'active' : '' }}"
-                                href="{{ url('admin/directors') }}" aria-expanded="false">
-                                <iconify-icon icon="lucide:users"></iconify-icon>
-                                <span class="hide-menu">Board of Directors</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'directors' ? 'active' : '' }}"
+                            href="{{ url('admin/directors') }}" aria-expanded="false">
+                            <iconify-icon icon="lucide:users"></iconify-icon>
+                            <span class="hide-menu">Board of Directors</span>
 
-                            </a>
-                        </li>
+                        </a>
+                    </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'team' ? 'active' : '' }}"
-                                href="{{ url('admin/team') }}" aria-expanded="false">
-                                <iconify-icon icon="lucide:users"></iconify-icon>
-                                <span class="hide-menu">Team</span>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'team' ? 'active' : '' }}"
+                            href="{{ url('admin/team') }}" aria-expanded="false">
+                            <iconify-icon icon="lucide:users"></iconify-icon>
+                            <span class="hide-menu">Team</span>
 
-                            </a>
-                        </li>
+                        </a>
+                    </li>
 
-                    </ul>
+                </ul>
                 </li> --}}
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'testimonials' ? 'active' : '' }}"
-                        href="{{ url('admin/testimonials') }}" aria-expanded="false">
-                        <iconify-icon icon="dashicons:testimonial"></iconify-icon>
-                        <span class="hide-menu">Testimonials</span>
-                    </a>
+                href="{{ url('admin/testimonials') }}" aria-expanded="false">
+                <iconify-icon icon="dashicons:testimonial"></iconify-icon>
+                <span class="hide-menu">Testimonials</span>
+                </a>
                 </li> --}}
 
                 {{-- <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'testimonials' ? 'active' : '' }}"
-                        href="{{ url('admin/testimonials') }}" aria-expanded="false">
-                        <iconify-icon icon="dashicons:testimonial"></iconify-icon>
-                        <span class="hide-menu">Testimonials</span>
-                    </a>
+                href="{{ url('admin/testimonials') }}" aria-expanded="false">
+                <iconify-icon icon="dashicons:testimonial"></iconify-icon>
+                <span class="hide-menu">Testimonials</span>
+                </a>
                 </li> --}}
 
 
 
 
                 <li class="sidebar-item">
-                    <a class="sidebar-link {{ $admin_page == 'aviva' ? 'active' : '' }}"
-                        href="{{ url('admin/aviva') }}" aria-expanded="false">
+                    <a class="sidebar-link {{ $admin_page == 'aviva' ? 'active' : '' }}" href="{{ url('admin/aviva') }}"
+                        aria-expanded="false">
                         <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
                         <span class="hide-menu">Aviva Pools</span>
                     </a>
                 </li>
 
-                  <li class="sidebar-item">
+                <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'renaissance' ? 'active' : '' }}"
                         href="{{ url('admin/renaissance') }}" aria-expanded="false">
                         <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
@@ -246,7 +254,7 @@
                     </a>
                 </li>
 
-                 <li class="sidebar-item">
+                <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'stick-built' ? 'active' : '' }}"
                         href="{{ url('admin/stick-built') }}" aria-expanded="false">
                         <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
@@ -263,7 +271,7 @@
                 </li>
 
 
-                  <li class="sidebar-item">
+                <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'colors' ? 'active' : '' }}"
                         href="{{ url('admin/colors') }}" aria-expanded="false">
                         <iconify-icon icon="arcticons:jobstreet"></iconify-icon>
@@ -290,141 +298,141 @@
 
                 {{-- <li class="sidebar-item">
                             <a class="sidebar-link {{ $admin_page == 'emails_content' || $admin_page == 'emails' ? 'active' : '' }}"
-                                href="{{ url('admin/emails_content') }}" aria-expanded="false">
-                                <iconify-icon icon="mdi:email-edit-outline"></iconify-icon>
-                                <span class="hide-menu">Edit Emails</span>
-                            </a>
-                        </li> --}}
+                href="{{ url('admin/emails_content') }}" aria-expanded="false">
+                <iconify-icon icon="mdi:email-edit-outline"></iconify-icon>
+                <span class="hide-menu">Edit Emails</span>
+                </a>
+                </li> --}}
 
 
                 {{-- <li class="sidebar-item">
                         <a class="sidebar-link has-arrow {{ $admin_page == 'real_estate_focus' || $admin_page == 'specialties' || $admin_page == 'area_served' || $admin_page == 'languages' || $admin_page == 'time_zones' || $admin_page == 'seller_add_on' || $admin_page == 'buyer_add_on' || $admin_page == 'categories' ? 'active' : '' }}"
-                            href="javascript:void(0)" aria-expanded="false">
-                            <iconify-icon icon="clarity:list-solid"></iconify-icon>
-                            <span class="hide-menu">Extras</span>
+                href="javascript:void(0)" aria-expanded="false">
+                <iconify-icon icon="clarity:list-solid"></iconify-icon>
+                <span class="hide-menu">Extras</span>
+                </a>
+                <ul aria-expanded="false"
+                    class="collapse first-level {{ $admin_page == 'real_estate_focus' || $admin_page == 'specialties' || $admin_page == 'area_served' || $admin_page == 'languages' || $admin_page == 'time_zones' || $admin_page == 'seller_add_on' || $admin_page == 'buyer_add_on' || $admin_page == 'categories' ? 'in' : '' }}">
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'real_estate_focus' ? 'active' : '' }}"
+                            href="{{ url('admin/real_estate_focus') }}" aria-expanded="false">
+                            <iconify-icon icon="mdi:home-outline"></iconify-icon>
+
+                            <span class="hide-menu">Property Type</span>
                         </a>
-                        <ul aria-expanded="false"
-                            class="collapse first-level {{ $admin_page == 'real_estate_focus' || $admin_page == 'specialties' || $admin_page == 'area_served' || $admin_page == 'languages' || $admin_page == 'time_zones' || $admin_page == 'seller_add_on' || $admin_page == 'buyer_add_on' || $admin_page == 'categories' ? 'in' : '' }}">
-
-                            <li class="sidebar-item">
-                                <a class="sidebar-link {{ $admin_page == 'real_estate_focus' ? 'active' : '' }}"
-                                    href="{{ url('admin/real_estate_focus') }}" aria-expanded="false">
-                                    <iconify-icon icon="mdi:home-outline"></iconify-icon>
-
-                                    <span class="hide-menu">Property Type</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a class="sidebar-link {{ $admin_page == 'specialties' ? 'active' : '' }}"
-                                    href="{{ url('admin/specialties') }}" aria-expanded="false">
-                                    <iconify-icon icon="mdi:star-outline"></iconify-icon>
-                                    <span class="hide-menu">Real Estate Specialties</span>
-                                </a>
-                            </li>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'specialties' ? 'active' : '' }}"
+                            href="{{ url('admin/specialties') }}" aria-expanded="false">
+                            <iconify-icon icon="mdi:star-outline"></iconify-icon>
+                            <span class="hide-menu">Real Estate Specialties</span>
+                        </a>
+                    </li>
 
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link {{ $admin_page == 'languages' ? 'active' : '' }}"
-                                    href="{{ url('admin/languages') }}" aria-expanded="false">
-                                    <iconify-icon icon="mdi:translate"></iconify-icon>
-                                    <span class="hide-menu">Languages Fluent</span>
-                                </a>
-                            </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'languages' ? 'active' : '' }}"
+                            href="{{ url('admin/languages') }}" aria-expanded="false">
+                            <iconify-icon icon="mdi:translate"></iconify-icon>
+                            <span class="hide-menu">Languages Fluent</span>
+                        </a>
+                    </li>
 
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link {{ $admin_page == 'time_zones' ? 'active' : '' }}"
-                                    href="{{ url('admin/time_zones') }}" aria-expanded="false">
-                                    <iconify-icon icon="mdi:clock-outline"></iconify-icon>
-                                    <span class="hide-menu">Primary Time Zones</span>
-                                </a>
-                            </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'time_zones' ? 'active' : '' }}"
+                            href="{{ url('admin/time_zones') }}" aria-expanded="false">
+                            <iconify-icon icon="mdi:clock-outline"></iconify-icon>
+                            <span class="hide-menu">Primary Time Zones</span>
+                        </a>
+                    </li>
 
 
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link {{ $admin_page == 'seller_add_on' ? 'active' : '' }}"
-                                    href="{{ url('admin/seller_add_on') }}" aria-expanded="false">
-                                    <iconify-icon icon="game-icons:sell-card"></iconify-icon>
-                                    <span class="hide-menu">Seller Add-ons</span>
-                                </a>
-                            </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'seller_add_on' ? 'active' : '' }}"
+                            href="{{ url('admin/seller_add_on') }}" aria-expanded="false">
+                            <iconify-icon icon="game-icons:sell-card"></iconify-icon>
+                            <span class="hide-menu">Seller Add-ons</span>
+                        </a>
+                    </li>
 
-                            <li class="sidebar-item">
-                                <a class="sidebar-link {{ $admin_page == 'buyer_add_on' ? 'active' : '' }}"
-                                    href="{{ url('admin/buyer_add_on') }}" aria-expanded="false">
-                                    <iconify-icon icon="game-icons:buy-card"></iconify-icon>
-                                    <span class="hide-menu">Buyer Add-ons</span>
-                                </a>
-                            </li>
-
-
-                        <li class="sidebar-item">
-                            <a class="sidebar-link {{ $admin_page == 'categories' ? 'active' : '' }}"
-                                href="{{ url('admin/categories') }}" aria-expanded="false">
-                                <iconify-icon icon="carbon:category"></iconify-icon>
-                                <span class="hide-menu">Report Issue Categories</span>
-                            </a>
-                        </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'buyer_add_on' ? 'active' : '' }}"
+                            href="{{ url('admin/buyer_add_on') }}" aria-expanded="false">
+                            <iconify-icon icon="game-icons:buy-card"></iconify-icon>
+                            <span class="hide-menu">Buyer Add-ons</span>
+                        </a>
+                    </li>
 
 
-                        </ul>
-                    </li> --}}
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'categories' ? 'active' : '' }}"
+                            href="{{ url('admin/categories') }}" aria-expanded="false">
+                            <iconify-icon icon="carbon:category"></iconify-icon>
+                            <span class="hide-menu">Report Issue Categories</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+                </li> --}}
 
 
 
 
                 {{-- <li class="sidebar-item">
                             <a class="sidebar-link has-arrow {{ $admin_page == 'article' || $admin_page == 'article_topic' ? 'active' : '' }}"
-                                href="javascript:void(0)" aria-expanded="false">
-                                <iconify-icon icon="ooui:articles-rtl"></iconify-icon>
-                                <span class="hide-menu">Articles</span>
+                href="javascript:void(0)" aria-expanded="false">
+                <iconify-icon icon="ooui:articles-rtl"></iconify-icon>
+                <span class="hide-menu">Articles</span>
+                </a>
+                <ul aria-expanded="false"
+                    class="collapse first-level {{ $admin_page == 'article' || $admin_page == 'article_topic' ? 'in' : '' }}">
+
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'article_topic' ? 'active' : '' }}"
+                            href="{{ url('admin/article_topic') }}">
+                            <span class="icon-small"></span>Article
+                            Topics
+                        </a>
+                    </li>
+
+
+                    <li class="sidebar-item">
+                        <a class="sidebar-link {{ $admin_page == 'article' ? 'active' : '' }}"
+                            href="{{ url('admin/article') }}">
+                            <span class="icon-small"></span>Articles
+                        </a>
+                    </li>
+
+
+                </ul>
+                </li> --}}
+
+
+                <li class="sidebar-item">
+                    <a class="sidebar-link has-arrow {{ $admin_page == 'faqs' || $admin_page == 'faq_categories' ? 'active' : '' }}"
+                        href="javascript:void(0)" aria-expanded="false">
+                        <iconify-icon icon="mdi:faq"></iconify-icon>
+                        <span class="hide-menu">FAQs</span>
+                    </a>
+                    <ul aria-expanded="false"
+                        class="collapse first-level {{ $admin_page == 'faqs' || $admin_page == 'faq_categories' ? 'in' : '' }}">
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link {{ $admin_page == 'faqs' ? 'active' : '' }}"
+                                href="{{ url('admin/faqs') }}">
+                                <span class="icon-small"></span>FAQs
+
                             </a>
-                            <ul aria-expanded="false"
-                                class="collapse first-level {{ $admin_page == 'article' || $admin_page == 'article_topic' ? 'in' : '' }}">
+                        </li>
 
 
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link {{ $admin_page == 'article_topic' ? 'active' : '' }}"
-                                            href="{{ url('admin/article_topic') }}">
-                                            <span class="icon-small"></span>Article
-                                            Topics
-                                        </a>
-                                    </li>
-
-
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link {{ $admin_page == 'article' ? 'active' : '' }}"
-                                            href="{{ url('admin/article') }}">
-                                            <span class="icon-small"></span>Articles
-                                        </a>
-                                    </li>
-
-
-                            </ul>
-                        </li> --}}
-
-
-                 <li class="sidebar-item">
-                            <a class="sidebar-link has-arrow {{ $admin_page == 'faqs' || $admin_page == 'faq_categories' ? 'active' : '' }}"
-                                href="javascript:void(0)" aria-expanded="false">
-                                <iconify-icon icon="mdi:faq"></iconify-icon>
-                                <span class="hide-menu">FAQs</span>
-                            </a>
-                            <ul aria-expanded="false"
-                                class="collapse first-level {{ $admin_page == 'faqs' || $admin_page == 'faq_categories' ? 'in' : '' }}">
-
-                                    <li class="sidebar-item">
-                                        <a class="sidebar-link {{ $admin_page == 'faqs' ? 'active' : '' }}"
-                                            href="{{ url('admin/faqs') }}">
-                                            <span class="icon-small"></span>FAQs
-
-                                        </a>
-                                    </li>
-
-
-                            </ul>
-                        </li> 
+                    </ul>
+                </li>
 
             </ul>
 
