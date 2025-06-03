@@ -16,7 +16,7 @@
 
 
 
-                        <div><img src="{{ get_site_image_src('renaissance', $gall->cover_image ?? 'default.jpg') }}" /></div>
+                        <div><img src="{{ get_site_image_src('stick', $gall->cover_image ?? 'default.jpg') }}" /></div>
 
                         @endforeach
 
@@ -27,7 +27,7 @@
 
 
 
-                        <div><img src="{{ get_site_image_src('renaissance', $gall->cover_image ?? 'default.jpg') }}" /></div>
+                        <div><img src="{{ get_site_image_src('stick', $gall->cover_image ?? 'default.jpg') }}" /></div>
 
                         @endforeach
 
@@ -80,7 +80,7 @@
 
             @foreach($designs as $design)
             <div class="card_view">
-                <img src="{{ get_site_image_src('renaissance', $design->size_image ?? 'default.jpg') }}" alt="">
+                <img src="{{ get_site_image_src('stick', $design->size_image ?? 'default.jpg') }}" alt="">
                 <h4>{{$design->title}}</h4>
             </div>
           @endforeach
@@ -118,16 +118,16 @@
         </div>
     </div>
 </section>
-<section class="cta_sec">
+<section class="cta_sec bg">
     <div class="contain">
         <div class="flex">
             <div class="sec_heading" data-aos="fade-up">
-                <h2>{!! $content['cta_heading'] ?? '' !!}</h2>
-                <p>{!! $content['cta_text'] ?? '' !!}</p>
+                <h2>Ready to Elevate Your Backyard?</h2>
+                <p>Let us help you build a patio cover that brings style, comfort, and value to your home. Our team will
+                    guide you through every step—from design to final installation.</p>
             </div>
             <div class="btn_blk text-center" data-aos="fade-up">
-                <a href="{{ url($content['cta_btn1_link']) }}" class="site_btn light">{!!
-                    $content['cta_btn1_txt'] ?? '' !!}</a>
+                <a href="request-quote.php" class="site_btn light">Schedule a Free Consultation</a>
             </div>
         </div>
     </div>

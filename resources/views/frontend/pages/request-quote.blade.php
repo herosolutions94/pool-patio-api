@@ -15,63 +15,63 @@
 <section class="quote_sec">
     <div class="contain">
         <div class="cntnt" data-aos="fade-up">
-            <form action="">
+            <form id="requestQuoteForm" action="{{url('/api/save-request-quote')}}" class="frmAjax">
                 <div class="row form_row">
                     <div class="col-md-6">
                         <label for="">First Name</label>
-                        <input type="text" class="input" placeholder="First Name">
+                        <input type="text" class="input" name="fname" placeholder="First Name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="">Last Name</label>
-                        <input type="text" class="input" placeholder="Last Name">
+                        <input type="text" class="input" name="lname" placeholder="Last Name" required>
                     </div>
                     <div class="col-md-6">
                         <label for="">Phone Number</label>
-                        <input type="text" class="input" placeholder="Phone Number">
+                        <input type="text" class="input" name="phone" placeholder="Phone Number" required>
                     </div>
                     <div class="col-md-6">
                         <label for="">Email Address</label>
-                        <input type="text" class="input" placeholder="Email Address">
+                        <input type="text" class="input" name="email" placeholder="Email Address" required>
                     </div>
                     <div class="col-md-12">
                         <label for="">Address</label>
-                        <input type="text" class="input" placeholder="Address">
+                        <input type="text" class="input" name="address" placeholder="Address" required>
                     </div>
                     <div class="col-md-12">
                         <label for="">What type of pool are you interested in?</label>
-                        <select name="" id="" class="input">
-                            <option value="">Plunge Pool</option>
-                            <option value="">Liner Pool</option>
-                            <option value="">Not Sure Yet</option>
+                        <select name="pool_type" id="" class="input" required>
+                            <option value="Plunge Pool">Plunge Pool</option>
+                            <option value="Liner Pool">Liner Pool</option>
+                            <option value="Not Sure Yet">Not Sure Yet</option>
                         </select>
                     </div>
                     <div class="col-md-12">
                         <label for="">What stage are you at in the process?</label>
-                        <select name="" id="" class="input">
-                            <option value="">Just Exploring Options</option>
-                            <option value="">Ready to Start</option>
+                        <select name="stage" id="" class="input" required>
+                            <option value="Just Exploring Options">Just Exploring Options</option>
+                            <option value="Ready to Start">Ready to Start</option>
                         </select>
                     </div>
                     <div class="col-md-12">
                         <label for="">Project Timeline</label>
-                        <select name="" id="" class="input">
-                            <option value="">ASAP</option>
-                            <option value="">3-6 Months</option>
-                            <option value="">Next Year</option>
+                        <select name="timeline" id="" class="input" required>
+                            <option value="ASAP">ASAP</option>
+                            <option value="3-6 Months">3-6 Months</option>
+                            <option value="Next Year">Next Year</option>
                         </select>
                     </div>
                     <div class="col-md-12">
                         <label for="">What is your estimated budget for this project?</label>
-                        <select name="" id="" class="input">
-                            <option value="">$30,000 - $50,000</option>
-                            <option value="">$50,000 - $75,000</option>
-                            <option value="">$75,000 - $100,000</option>
-                            <option value="">I'm not sure yet</option>
+                        <select name="budget" id="" class="input" required>
+                            <option value="$30,000 - $50,000">$30,000 - $50,000</option>
+                            <option value="$50,000 - $75,000">$50,000 - $75,000</option>
+                            <option value="$75,000 - $100,000">$75,000 - $100,000</option>
+                            <option value="I'm not sure yet">I'm not sure yet</option>
                         </select>
                     </div>
                     <div class="col-md-12">
                         <label for="">Anything else we should know?</label>
-                        <textarea name="" id="" placeholder="Type here.." class="input"></textarea>
+                        <textarea name="anything_else" id="" placeholder="Type here.." class="input"></textarea>
                     </div>
                 </div>
                 <div class="btn_blk">

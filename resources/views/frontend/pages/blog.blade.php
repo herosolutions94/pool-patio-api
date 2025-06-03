@@ -7,10 +7,8 @@
 <section class="all_sub">
     <div class="contain">
         <div class="cntnt" data-aos="fade-up">
-            <h1>Insights & Inspiration for Your Outdoor Living</h1>
-            <p>Explore expert tips, design ideas, and industry insights to help you plan the perfect backyard escape.
-                From choosing the right pool model to understanding patio materials, our blog is your go-to guide for
-                high-end outdoor living.</p>
+            <h1>{{ $content['banner_heading'] }}</h1>
+            {!! $content['banner_text'] ?? '' !!}
         </div>
     </div>
 </section>
@@ -18,462 +16,56 @@
     <div class="contain">
         <div class="featured_blog">
             <div class="flex" data-aos="fade-up">
+                @foreach($featured_blog_posts as $post)
                 <div class="_col">
-                    <div class="inner"><a href="blog-detail.php"></a>
-                        <div class="image">
-                            <img src="assets/images/aviva2.webp" alt="" />
-                        </div>
-                        <div class="cntnt">
-                            <div class="category">Fiberglass Pool</div>
-                            <h4>Top 5 Benefits of Installing a Fiberglass Pool</h4>
-                            <div class="date">2 March, 2024</div>
-                        </div>
+                    <div class="inner">
+                        <a href="{{ url('blog-detail/'.$post->slug) }}">
+                            <div class="image">
+                                <img src="{{ get_site_image_src('blog', !empty($post) ? $post->image : '') }}" alt="{{ $post->title }}" />
+                            </div>
+                            <div class="cntnt">
+                                <div class="category">{{ $post->cat_name }}</div>
+                                <h4>{{ $post->title }}</h4>
+                                <div class="date">{{ $post->created_date }}</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
-
-                <div class="_col">
-                    <div class="inner"><a href="blog-detail.php"></a>
-                        <div class="image">
-                            <img src="assets/images/aviva3.webp" alt="" />
-                        </div>
-                        <div class="cntnt">
-                            <div class="category">Outdoor Living & Design</div>
-                            <h4>How to Choose the Perfect Patio Cover for Your Space</h4>
-                            <div class="date">2 March, 2024</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="_col">
-                    <div class="inner"><a href="blog-detail.php"></a>
-                        <div class="image">
-                            <img src="assets/images/aviva4.webp" alt="" />
-                        </div>
-                        <div class="cntnt">
-                            <div class="category">Hardscaping & Landscaping</div>
-                            <h4>Hardscape Trends: What's Hot in 2025</h4>
-                            <div class="date">2 March, 2024</div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
+
         </div>
         <div class="all_blog" data-aos="fade-up">
             <div class="tabs_account">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#tab1">Pools & Water Features</a></li>
-                    <li><a data-toggle="tab" href="#tab2">Patio Covers & Shade Solutions</a></li>
-                    <li><a data-toggle="tab" href="#tab3">Outdoor Living & Design</a></li>
-                    <li><a data-toggle="tab" href="#tab4">Hardscaping & Landscaping</a></li>
+                    @foreach($blog_categories as $index => $category)
+                    <li class="{{ $index == 0 ? 'active' : '' }}">
+                        <a data-toggle="tab" href="#tab-{{ $category->slug }}">{{ $category->name }}</a>
+                    </li>
+                    @endforeach
                 </ul>
             </div>
             <div class="tab-content">
-                <div id="tab1" class="tab-pane fade in active">
+                @foreach($blog_categories as $index => $category)
+                <div id="tab-{{ $category->slug }}" class="tab-pane fade {{ $index == 0 ? 'in active' : '' }}">
                     <div class="flex_all_blog">
+                        @foreach($category->blog_posts as $post)
                         <div class="col">
-                            <a href="blog-detail.php">
+                            <a href="{{ url('blog-detail/'.$post->slug) }}">
                                 <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
+                                    <img src="{{ get_site_image_src('blog', !empty($post) ? $post->image : '') }}" alt="{{ $post->title }}" />
                                 </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
+                                <h5>{{ $post->title }}</h5>
+                                <div class="date">{{ $post->created_date }}</div>
                             </a>
                         </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva7.jpg" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva3.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva2.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva1.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
+                        @endforeach
                     </div>
-                    <div class="text-center pagination_custom">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
+                    {{-- Optional Pagination per tab if implemented --}}
                 </div>
-                <div id="tab2" class="tab-pane fade">
-                    <div class="flex_all_blog">
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva7.jpg" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva3.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva2.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva1.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-center pagination_custom">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="tab3" class="tab-pane fade">
-                    <div class="flex_all_blog">
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva7.jpg" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva3.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva2.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva1.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-center pagination_custom">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div id="tab4" class="tab-pane fade">
-                    <div class="flex_all_blog">
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva7.jpg" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva3.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva2.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva1.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Do Patio Covers Add Value to Your Home?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva5.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Planning Your Outdoor Living Space: A Step-by-Step Guide</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="blog-detail.php">
-                                <div class="image">
-                                    <img src="assets/images/aviva6.webp" alt="" />
-                                </div>
-                                <h5>
-                                    <Link href="">Aviva Pools vs Traditional Pools: What’s the Difference?</Link>
-                                </h5>
-                                <div class="date">2 March, 2024</div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="text-center pagination_custom">
-                        <ul class="pagination">
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                    </div>
-                </div>
-
+                @endforeach
             </div>
+
         </div>
     </div>
 </section>

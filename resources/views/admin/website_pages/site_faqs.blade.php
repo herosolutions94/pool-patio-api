@@ -109,6 +109,66 @@
 
     </div>
 
+    <div class="card">
+        <div class="card-header">
+            <h5>CTA Section</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" for="cta_heading">Heading</label>
+                            <input class="form-control" id="cta_heading" type="text" name="cta_heading" placeholder=""
+                                value="{{ $sitecontent['cta_heading'] ?? '' }}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" for="cta_text">Text</label>
+                            <textarea id="cta_text" name="cta_text" rows="4"
+                                class=" form-control">{{ !empty($sitecontent['cta_text']) ? $sitecontent['cta_text'] : '' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="cta_btn1_txt">Button Text</label>
+                    <input class="form-control" id="cta_btn1_txt" type="text" name="cta_btn1_txt" placeholder=""
+                        value="{{ $sitecontent['cta_btn1_txt'] ?? '' }}">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="cta_btn1_link">Button Link</label>
+                    <select name="cta_btn1_link" class="form-control" required>
+                        <option value="">Set URL</option>
+
+                        @foreach ($all_pages as $key => $page)
+                        <option value="{{ $key }}"
+                            {{ !empty($sitecontent['cta_btn1_link']) && $sitecontent['cta_btn1_link'] == $key ? 'selected' : '' }}>
+                            {{ $page }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
 
 
 

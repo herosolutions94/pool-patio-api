@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Member_model;
 use Illuminate\Http\Request;
 use App\Models\Contact_model;
+use App\Models\Request_Quote_model;
 use App\Models\Newsletter_model;
 use App\Models\Report_model;
 use Illuminate\Support\Facades\DB;
@@ -210,13 +211,11 @@ class Ajax extends Controller
         if ($input) {
             $request_data = [
                 'email' => 'required|email',
-                'name' => 'required',
-                'phone' => 'required',
-                'user_type' => 'required',
-                'work_type' => 'required',
-                'specialization' => 'required',
-                'location' => 'required',
+                'fname' => 'required',
+                'lname' => 'required',
+                'phone' => 'required',               
                 'message' => 'required',
+                'hear_about_us' => 'required',
                 // 'feedback_type' => 'required',
 
             ];
@@ -228,15 +227,12 @@ class Ajax extends Controller
                 $res['msg'] = convertArrayMessageToString($validator->errors()->all());
             } else {
                 $data = array(
-                    'name' => $input['name'],
+                    'fname' => $input['fname'],
+                    'lname' => $input['lname'],
                     'email' => $input['email'],
                     'phone' => $input['phone'],
-                    'user_type' => $input['user_type'],
-                    'work_type' => $input['work_type'],
-                    // 'feedback_type' => $input['feedback_type'],
-                    'specialization' => $input['specialization'],
-                    'office' => $input['location'],
-                    'message' => $input['message'],
+                     'message' => $input['message'],
+                    'hear_about_us' => $input['hear_about_us'],                   
                     'status' => 0
                 );
                 // pr($data);
@@ -263,67 +259,71 @@ class Ajax extends Controller
         exit(json_encode($res));
     }
 
-    public function apply(Request $request)
+    public function request_quote(Request $request)
     {
 
         $res = array();
         $res['status'] = 0;
         $input = $request->all();
+        // pr($input);
         if ($input) {
             $request_data = [
-                // 'file' => 'max:40000',
+                'email' => 'required|email',
                 'fname' => 'required',
                 'lname' => 'required',
-                'email' => 'required|email',
                 'phone' => 'required',
-                'zip_code' => 'required',
-
-                'job_title' => 'required',
-                'company_name' => 'required',
-                'work_duration' => 'required',
-                'description' => 'required',
-                'agree' => 'required',
+                'anything_else' => 'required',
+                'budget' => 'required',
+                'timeline' => 'required',
+                'stage' => 'required',
+                'address' => 'required',
+                'pool_type' => 'required',
+                
 
             ];
             $validator = Validator::make($input, $request_data);
+          
             if ($validator->fails()) {
                 $res['status'] = 0;
                 // $res['msg'] = 'Error >>' . $validator->errors();
                 $res['msg'] = convertArrayMessageToString($validator->errors()->all());
-
             } else {
                 $data = array(
-                    'fname' => $input['fname'],
+                     'fname' => $input['fname'],
                     'lname' => $input['lname'],
                     'email' => $input['email'],
                     'phone' => $input['phone'],
-                    'zip_code' => $input['zip_code'],
-
-                    'job_title' => $input['job_title'],
-                    'company_name' => $input['company_name'],
-                    'work_duration' => $input['work_duration'],
-                    'description' => $input['description'],
-                    'agree' => $input['agree'],
-                    
+                     'anything_else' => $input['anything_else'],
+                    'budget' => $input['budget'],
+                    'timeline' => $input['timeline'],
+                    'stage' => $input['stage'],
+                    'address' => $input['address'],
+                    'pool_type' => $input['pool_type'],
                     'status' => 0
                 );
-                // Question_request_model::create($data);
-                $email_data = array(
-                    'email_to' => $this->data['site_settings']->site_email,
-                    'email_to_name' => 'Admin',
-                    'email_from' => $this->data['site_settings']->site_noreply_email,
-                    'email_from_name' => $this->data['site_settings']->site_name,
-                    'sender_name' => $input['fname'],
-                    'subject' => 'New Question Query',
-                    'mem_data' => $data,
+                // pr($data);
+                Request_Quote_model::create($data);
 
-                );
+                // $email_data = array(
+                //     'email_to' => $this->data['site_settings']->site_email,
+                //     'email_to_name' => 'Admin',
+                //     'email_from' => $this->data['site_settings']->site_noreply_email,
+                //     'email_from_name' => $this->data['site_settings']->site_name,
+                //     'sender_name' => $input['name'],
+                //     'subject' => 'New Contact Query',
+                //     'mem_data' => $data,
+                //     // 'link' => $verify_link,
+
+                // );
                 // pr($email_data);
-                send_email($email_data, 'question-request-email');
+                // send_email($email_data, 'contact-email');
+
                 $res['status'] = 1;
-                $res['msg'] = 'Your request submitted successfully!';
+                $res['msg'] = 'Request Quote submitted successfully!';
             }
         }
         exit(json_encode($res));
     }
+
+    
 }
