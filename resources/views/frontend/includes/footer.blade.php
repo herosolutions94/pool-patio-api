@@ -11,14 +11,14 @@
                 <h5>Follow us on</h5>
                 <ul class="social_lnks">
                     <li>
-                        <a href="{{ $site_settings['site_facebook'] ?? '#' }}"><img src="assets/images/facebook.svg"
+                        <a href="{{ $site_settings['site_facebook'] ?? '#' }}" target="_blank"><img src="assets/images/facebook.svg"
                                 alt=""></a>
                     </li>
-                    <li><a href="{{ $site_settings['site_instagram'] ?? '#' }}"><img src="assets/images/instagram.svg"
+                    <li><a href="{{ $site_settings['site_instagram'] ?? '#' }}" target="_blank"><img src="assets/images/instagram.svg"
                                 alt=""></a></li>
-                    <li><a href="{{ $site_settings['site_twitter'] ?? '#' }}"><img src="assets/images/twitter.svg"
+                    <li><a href="{{ $site_settings['site_twitter'] ?? '#' }}" target="_blank"><img src="assets/images/twitter.svg"
                                 alt=""></a></li>
-                    <li><a href="{{ $site_settings['site_linkedin'] ?? '#' }}"><img src="assets/images/linkedin.svg"
+                    <li><a href="{{ $site_settings['site_linkedin'] ?? '#' }}" target="_blank"><img src="assets/images/linkedin.svg"
                                 alt=""></a></li>
                 </ul>
             </div>
