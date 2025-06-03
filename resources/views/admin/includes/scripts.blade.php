@@ -64,34 +64,44 @@
 
 <script>
     $(document).ready(function() {
-        $(".addNewRowTbl").click(function() {
-
-            var clonedRow = $(this).closest('#newTable').find('tbody').find('tr:last-child').clone();
-            clonedRow.find('input').val('').end();
-            clonedRow.find('textarea').val('').end();
-            clonedRow.find('td:last-child').html(
-                '<td class="text-center"><a href="javascript:void(0)" class="text-primary edit delNewRowTbl" id="delNewRowTbl"><i class="ti ti-minus fs-5"></i></a></td>'
-            );
-            clonedRow.find('img').attr('src', "{{ asset('/images/no-image.svg') }}");
-            $(this).closest('#newTable').before().append(clonedRow);
-        });
-
-        $(document).on('click', '.delNewRowTbl', function() {
-            $(this).closest('tr').remove();
-        });
-        $(document).on('click', '#newImg', function() {
-            $(this).closest("#imgDiv").find('#newImgInput').trigger('click');
-        });
-
-        $(document).on('change', '#newImgInput', function() {
-            var preview = $(this).closest("#imgDiv").find("#newImg");
-            var oFReader = new FileReader();
-            oFReader.readAsDataURL($(this)[0].files[0]);
-            oFReader.addEventListener("load", function() {
-                preview.attr('src', oFReader.result);
-            }, false);
-        });
-    })
+       var rowIndexForClone = 10000;
+       $(".addNewRowTbl").click(function() {
+           var isCkeditor = !!jQuery(this).closest('#newTable').attr('isCkeditor');
+           var clonedRow = $(this).closest('#newTable').find('tbody').find('tr:last-child').clone();
+           let name = clonedRow.find('textarea').attr('name');
+           clonedRow.find('input').val('').end();
+           if (isCkeditor)
+               clonedRow.find('textarea').parent().empty().html(
+                   `<textarea name="${name}" id="id${++rowIndexForClone}" class="form-control ckeditor" placeholder="Text" rows="4"></textarea>`
+               )
+           else
+               clonedRow.find('textarea').val('').end();
+           clonedRow.find('textarea').val('').end();
+           clonedRow.find('td:last-child').html(
+               '<td class="text-center"><a href="javascript:void(0)" class="text-primary edit delNewRowTbl" id="delNewRowTbl"><i class="ti ti-minus fs-5"></i></a></td>'
+           );
+           clonedRow.find('img').attr('src', "{{ asset('/images/no-image.svg') }}");
+           $(this).closest('#newTable').before().append(clonedRow);
+           if (isCkeditor)
+               CKEDITOR.replace(`id${rowIndexForClone}`);
+       });
+ 
+       $(document).on('click', '.delNewRowTbl', function() {
+           $(this).closest('tr').remove();
+       });
+       $(document).on('click', '#newImg', function() {
+           $(this).closest("#imgDiv").find('#newImgInput').trigger('click');
+       });
+ 
+       $(document).on('change', '#newImgInput', function() {
+           var preview = $(this).closest("#imgDiv").find("#newImg");
+           var oFReader = new FileReader();
+           oFReader.readAsDataURL($(this)[0].files[0]);
+           oFReader.addEventListener("load", function() {
+               preview.attr('src', oFReader.result);
+           }, false);
+       });
+   })
 
     //
 </script>

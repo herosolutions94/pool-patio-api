@@ -137,6 +137,14 @@
                     </div>
                 </div>
 
+                <div class="col-lg-6">
+                    <div class="mb-3">
+                        <label class="form-label" for="short_text">Text</label>
+                        <textarea id="short_text" name="short_text" rows="4"
+                            class=" editor">{{ !empty($content['short_text']) ? $content['short_text'] : '' }}</textarea>
+                    </div>
+                </div>
+
 
 
                 <div class="col-lg-12 d-flex align-items-stretch">
@@ -344,7 +352,7 @@
 
                                                     <input type="hidden" name="colour_id[]" value="{{ $colour->id }}">
                                                     <td>
-                                                        <input type="text" name="colour_name[]" class="form-control" value="{{ $colour->title }}" placeholder="Colour Title" required>
+                                                        <input type="text" name="colour_name[]" class="form-control" value="{{ $colour->title }}" placeholder=" Title" required>
                                                     </td>
 
                                                     <td>
@@ -373,7 +381,7 @@
 
 
                                                     <td>
-                                                        <input type="text" name="colour_name[]" class="form-control" placeholder="Colour Title" required>
+                                                        <input type="text" name="colour_name[]" class="form-control" placeholder=" Title" required>
                                                     </td>
 
                                                     <td>

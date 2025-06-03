@@ -16,123 +16,26 @@
 <section class="model_sec">
     <div class="contain">
         <div class="flex" data-aos="fade-up">
+
+          @foreach($hardscapes as $hard)
             <div class="col">
                 <div class="inner">
-                    <a href="/hardscapes-details" class="image">
-                        <img src="assets/images/hard1.webp" alt="">
+
+                    <a href="{{ route('hardscapes.details', $hard->slug) }}" class="image">
+                        <img src="{{ get_site_image_src('hardscapes', $hard['image1'] ?? 'default.jpg') }}" alt="">
                     </a>
                     <div class="txt">
-                        <h4>Finishes That blend With Nature</h4>
+                        <h4>{{$hard->name}}</h4>
                         <div class="btn_blk">
-                            <a href="/hardscapes-details" class="site_btn block">Read More</a>
+                            <a href="{{ route('hardscapes.details', $hard->slug) }}" class="site_btn block">Read More</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard2.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>New Colonial</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard3.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Nighttime Entertainment</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard4.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Palm Beach Glamour</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard5.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Outdoor Wellness</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard6.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Split Level Design</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard7.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Warm Neutrals</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard8.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Stone-Crafted Surfaces</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
-                        <img src="assets/images/hard1.webp" alt="">
-                    </a>
-                    <div class="txt">
-                        <h4>Finishes That blend With Nature</h4>
-                        <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+
+            
+            
         </div>
     </div>
 </section>

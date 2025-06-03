@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Aviva_model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use App\Models\AvivaSpecification_model; 
+use Illuminate\Support\Facades\Storage;
 
 class Aviva extends Controller
 {
@@ -77,7 +79,7 @@ class Aviva extends Controller
                 'status' => !empty($input['status']) ? 1 : 0,
                 'featured' => !empty($input['featured']) ? 1 : 0,
 
-                
+
             ];
 
             for ($i = 1; $i <= 10; $i++) {
@@ -138,17 +140,23 @@ class Aviva extends Controller
                     ]);
 
                     $image = $request->file($field)->store('public/aviva/');
+                    $filename = basename($image);
 
                     if (!empty($image)) {
-                        $oldImage = $content[$field] ?? null;
-                        if (!empty($oldImage)) {
-                            removeImage("aviva/" . $oldImage);
+                      
+                        if ($i == 1 || $i == 2) {
+                            $oldImage = $product->$field ?? null;
+                            if (!empty($oldImage)) {
+                                removeImage("aviva/" . $oldImage);
+                            }
+                            $product->$field = $filename; 
+                        } else {
+                            $oldImage = $content[$field] ?? null;
+                            if (!empty($oldImage)) {
+                                removeImage("aviva/" . $oldImage);
+                            }
+                            $content[$field] = $filename; 
                         }
-                        if ($i == 1) {
-                            $product->image1 = basename($image);
-                        }
-
-                        $product->$field = basename($image);
                     }
                 }
             }
@@ -223,7 +231,7 @@ class Aviva extends Controller
                 if ($coverId) {
                     DB::table('aviva_specifications')->where('id', $coverId)->update([
                         'title' => $cover_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['co_order_no'][$i] ?? 0,
                         'cover_image' => $imageName,
                         'detail' => $detail,
                         'updated_at' => now(),
@@ -233,7 +241,7 @@ class Aviva extends Controller
                     $newId = DB::table('aviva_specifications')->insertGetId([
                         'product_id' => $productId,
                         'title' => $cover_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['co_order_no'][$i] ?? 0,
                         'cover_image' => $imageName,
                         'detail' => $detail,
                         'created_at' => now(),
@@ -248,6 +256,88 @@ class Aviva extends Controller
             ->where('product_id', $productId)
             ->whereNotIn('id', $processedIds)
             ->delete();
+    }
+
+
+    public function manageSpecifications(Request $request, $productId)
+    {
+        has_access(17); // adjust access ID as needed
+
+        $this->data['product'] = Aviva_model::findOrFail($productId);
+
+        $this->data['specifications'] = AvivaSpecification_model::where('product_id', $productId)
+            ->orderBy('order_no')
+            ->get();
+
+        $this->data['specification'] = null;
+
+        if ($request->has('id')) {
+            $this->data['specification'] = AvivaSpecification_model::where('id', $request->query('id'))
+                ->where('product_id', $productId)
+                ->first();
+        }
+
+        return view('admin.aviva.specification', $this->data);
+    }
+
+    public function saveSpecification(Request $request, $productId)
+    {
+        has_access(17);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'detail' => 'required|string',
+            'order_no' => 'nullable|integer|min:0',
+            'cover_image' => 'nullable|image|max:2048',
+            'status' => 'nullable|boolean',
+        ]);
+
+        $specificationId = $request->input('specification_id');
+
+        if ($specificationId) {
+            $spec = AvivaSpecification_model::where('id', $specificationId)->where('product_id', $productId)->firstOrFail();
+        } else {
+            $spec = new AvivaSpecification_model();
+            $spec->product_id = $productId;
+        }
+
+        $spec->title = $request->title;
+        $spec->detail = $request->detail;
+        $spec->order_no = $request->order_no ?? 0;
+        $spec->status = $request->has('status') ? 1 : 0;
+
+        if ($request->hasFile('cover_image') && $request->file('cover_image')->isValid()) {
+            // Delete old image if exists
+            if ($spec->cover_image && Storage::disk('public')->exists('aviva/' . $spec->cover_image)) {
+                Storage::disk('public')->delete('aviva/' . $spec->cover_image);
+            }
+
+            $imageName = time() . '_' . uniqid() . '.' . $request->cover_image->getClientOriginalExtension();
+            $request->cover_image->storeAs('aviva', $imageName, 'public');
+            $spec->cover_image = $imageName;
+        }
+
+        $spec->save();
+
+        return redirect()->route('aviva.specifications.manage', ['productId' => $productId])
+            ->with('success', 'Specification saved successfully.');
+    }
+
+    public function deleteSpecification($id)
+    {
+        has_access(17);
+
+        $spec = AvivaSpecification_model::findOrFail($id);
+
+        if ($spec->cover_image && Storage::disk('public')->exists('aviva/' . $spec->cover_image)) {
+            Storage::disk('public')->delete('aviva/' . $spec->cover_image);
+        }
+
+        $productId = $spec->product_id;
+        $spec->delete();
+
+        return redirect()->route('aviva.specifications.manage', ['productId' => $productId])
+            ->with('success', 'Specification deleted successfully.');
     }
 
 
@@ -275,7 +365,7 @@ class Aviva extends Controller
                 if ($colourId) {
                     DB::table('aviva_colours')->where('id', $colourId)->update([
                         'title' => $colour_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['c_order_no'][$i] ?? 0,
                         'colour_image' => $imageName,
 
                         'updated_at' => now(),
@@ -285,7 +375,7 @@ class Aviva extends Controller
                     $newId = DB::table('aviva_colours')->insertGetId([
                         'product_id' => $productId,
                         'title' => $colour_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['c_order_no'][$i] ?? 0,
                         'colour_image' => $imageName,
 
                         'created_at' => now(),
@@ -369,7 +459,7 @@ class Aviva extends Controller
                 if ($sizeId) {
                     DB::table('aviva_designs')->where('id', $sizeId)->update([
                         'title' => $size_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['s_order_no'][$i] ?? 0,
                         'size_image' => $imageName,
 
                         'updated_at' => now(),
@@ -379,7 +469,7 @@ class Aviva extends Controller
                     $newId = DB::table('aviva_designs')->insertGetId([
                         'product_id' => $productId,
                         'title' => $size_name,
-                        'order_no' => $input['order_no'][$i] ?? 0,
+                        'order_no' => $input['s_order_no'][$i] ?? 0,
                         'size_image' => $imageName,
 
                         'created_at' => now(),

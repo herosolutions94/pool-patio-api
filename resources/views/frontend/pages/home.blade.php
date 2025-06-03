@@ -1,6 +1,5 @@
 @extends('layouts.frontend')
 
-@section('title', 'Welcome to Our Website')
 
 @section('content')
 <section class="banner"
