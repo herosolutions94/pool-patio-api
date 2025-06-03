@@ -20,6 +20,7 @@
           @foreach($hardscapes as $hard)
             <div class="col">
                 <div class="inner">
+
                     <a href="{{ route('hardscapes.details', $hard->slug) }}" class="image">
                         <img src="{{ get_site_image_src('hardscapes', $hard['image1'] ?? 'default.jpg') }}" alt="">
                     </a>

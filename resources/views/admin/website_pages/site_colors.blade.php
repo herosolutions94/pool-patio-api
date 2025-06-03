@@ -70,17 +70,6 @@
             <div class="row">
                 <div class="col-md-12">
 
-
-                    <!-- <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="banner_heading">Banner Heading</label>
-                                <input class="form-control" id="banner_heading" type="text" name="banner_heading"
-                                    placeholder="" value="{{ $sitecontent['banner_heading'] ?? '' }}">
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
@@ -91,78 +80,70 @@
                         </div>
                     </div>
 
-
-
-                    <!-- <div class="row">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="banner_btn1_txt">Button 1 Text</label>
-                                <input class="form-control" id="banner_btn1_txt" type="text" name="banner_btn1_txt"
-                                    placeholder="" value="{{ $sitecontent['banner_btn1_txt'] ?? '' }}">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="banner_btn1_link">Button 1 Link URL</label>
-                                <select name="banner_btn1_link" class="form-control" required>
-                                    <option value="">Set URL</option>
-
-                                    @foreach ($all_pages as $key => $page)
-                                    <option value="{{ $key }}"
-                                        {{ !empty($sitecontent['banner_btn1_link']) && $sitecontent['banner_btn1_link'] == $key ? 'selected' : '' }}>
-                                        {{ $page }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="banner_btn2_txt">Button 2 Text</label>
-                                <input class="form-control" id="banner_btn2_txt" type="text" name="banner_btn2_txt"
-                                    placeholder="" value="{{ $sitecontent['banner_btn2_txt'] ?? '' }}">
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label" for="banner_btn2_link">Button 2 Link URL</label>
-                                <select name="banner_btn2_link" class="form-control" required>
-                                    <option value="">Set URL</option>
-
-                                    @foreach ($all_pages as $key => $page)
-                                    <option value="{{ $key }}"
-                                        {{ !empty($sitecontent['banner_btn2_link']) && $sitecontent['banner_btn2_link'] == $key ? 'selected' : '' }}>
-                                        {{ $page }}
-                                    </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- <div class="row">
-                            <div class="col">
-                                <div class="mb-3">
-                                    <label class="form-label" for="search_field_txt">Search Bar Field Text</label>
-                                    <input class="form-control" id="search_field_txt" type="text"
-                                        name="search_field_txt" placeholder=""
-                                        value="{{ $sitecontent['search_field_txt'] ?? '' }}">
-                </div>
-            </div>
-            <div class="col">
-                <div class="mb-3">
-                    <label class="form-label" for="search_btn_txt">Search Bar Button Text</label>
-                    <input class="form-control" id="search_btn_txt" type="text" name="search_btn_txt" placeholder=""
-                        value="{{ $sitecontent['search_btn_txt'] ?? '' }}">
-                </div>
-            </div>
-        </div> --}} -->
-
                 </div>
 
             </div>
         </div>
+
+
+    </div>
+
+    <div class="card">
+        <div class="card-header">
+            <h5>CTA Section</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" for="cta_heading">Heading</label>
+                            <input class="form-control" id="cta_heading" type="text" name="cta_heading" placeholder=""
+                                value="{{ $sitecontent['cta_heading'] ?? '' }}">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label" for="cta_text">Text</label>
+                            <textarea id="cta_text" name="cta_text" rows="4"
+                                class=" form-control">{{ !empty($sitecontent['cta_text']) ? $sitecontent['cta_text'] : '' }}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="cta_btn1_txt">Button Text</label>
+                    <input class="form-control" id="cta_btn1_txt" type="text" name="cta_btn1_txt" placeholder=""
+                        value="{{ $sitecontent['cta_btn1_txt'] ?? '' }}">
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="mb-3">
+                    <label class="form-label" for="cta_btn1_link">Button Link</label>
+                    <select name="cta_btn1_link" class="form-control" required>
+                        <option value="">Set URL</option>
+
+                        @foreach ($all_pages as $key => $page)
+                        <option value="{{ $key }}"
+                            {{ !empty($sitecontent['cta_btn1_link']) && $sitecontent['cta_btn1_link'] == $key ? 'selected' : '' }}>
+                            {{ $page }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+        </div>
+
+
 
 
     </div>

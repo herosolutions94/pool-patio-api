@@ -52,26 +52,27 @@
                 </div>
             </div>
         </div>
-        <form action="" data-aos="fade-up">
+        <form id="contactForm" action="{{url('/api/save-contact-message')}}" data-aos="fade-up" class="frmAjax">
+            @csrf
             <h3>Have a Quick Question?</h3>
             <div class="row form_row">
                 <div class="col-md-6">
-                    <input type="text" class="input" placeholder="First Name">
+                    <input type="text" class="input" name="fname" placeholder="First Name" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="input" placeholder="Last Name">
+                    <input type="text" class="input" name="lname" placeholder="Last Name" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="input" placeholder="Phone Number">
+                    <input type="text" class="input" name="phone" placeholder="Phone Number" required>
                 </div>
                 <div class="col-md-6">
-                    <input type="text" class="input" placeholder="Email Address">
+                    <input type="text" class="input" name="email" placeholder="Email Address" required>
                 </div>
                 <div class="col-md-12">
-                    <textarea name="" id="" placeholder="Enter Your Message Here" class="input"></textarea>
+                    <textarea name="message" id="" placeholder="Enter Your Message Here" class="input"></textarea>
                 </div>
                 <div class="col-md-12">
-                    <input type="text" class="input" placeholder="How did you hear about us?">
+                    <input type="text" class="input" name="hear_about_us" placeholder="How did you hear about us?">
                 </div>
             </div>
             <div class="btn_blk">

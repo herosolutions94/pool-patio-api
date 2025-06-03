@@ -195,13 +195,6 @@ class FrontendPages extends Controller
         $this->data['faqs'] = getFaqsStick($aviva->id);
         $this->data['content'] = get_page('pool_details');
 
-
-
-
-
-
-
-
         $this->data['cta_section'] = get_page('cta_section');
 
         return view('frontend/pages/stick-details', $this->data);
@@ -209,6 +202,7 @@ class FrontendPages extends Controller
 
     public function hardscapes_details_page($slug)
     {
+  $this->data['content'] = get_page('patio_details');
         $aviva = Hardscapes_model::where('slug', $slug)->where('status', 1)->firstOrFail();
         $this->data['page_title'] = $aviva->meta_title . ' - ' . $this->data['site_settings']->site_name;
         $this->data['meta_desc'] = (object)[
@@ -228,21 +222,10 @@ class FrontendPages extends Controller
         $this->data['content_data'] = json_decode($this->data['hardscape']->content, true);
         $this->data['specifies'] = getSpecifyHardscapes($aviva->id);
         $this->data['gallerys'] = getHardGallery($aviva->id);
-
-        $this->data['content'] = get_page('pool_details');
-
-
-
-
-
-
-
-
         $this->data['cta_section'] = get_page('cta_section');
 
         return view('frontend/pages/hardscapes-details', $this->data);
     }
-
 
     public function renaissance_patio_page(Request $request)
     {
@@ -381,6 +364,7 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
+
         $this->data['cta_section'] = get_page('cta_section');
         $colors = Colors_model::orderBy('id', 'DESC')->where('status', '1')->where('featured', 1)->get();
         foreach ($colors as $color) {

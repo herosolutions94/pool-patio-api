@@ -70,25 +70,27 @@ Route::get('/admin/login', [Index::class, 'admin_login'])->middleware('admin_log
 Route::post('/admin/login', [Index::class, 'login'])->middleware('admin_logged_in');
 Route::get('/admin/logout', [Index::class, 'logout']);
 
-/*==============================Frontend =====================================*/
+
+    /*==============================Frontend =====================================*/
 
 
-Route::match(['GET', 'POST'], '/', [FrontendPages::class, 'home_page']);
-Route::match(['GET', 'POST'], '/about', [FrontendPages::class, 'about_page']);
-Route::match(['GET', 'POST'], '/aviva-pools', [FrontendPages::class, 'aviva_pools_page']);
-Route::match(['GET', 'POST'], '/renaissance-patio', [FrontendPages::class, 'renaissance_patio_page']);
-Route::match(['GET', 'POST'], '/stick-built', [FrontendPages::class, 'stick_built_page']);
-Route::match(['GET', 'POST'], '/hardscapes', [FrontendPages::class, 'hardscapes_page']);
-Route::match(['GET', 'POST'], '/colors', [FrontendPages::class, 'colors_page']);
-Route::match(['GET', 'POST'], '/request-quote', [FrontendPages::class, 'request_quote_page']);
-Route::match(['GET', 'POST'], '/faqs', [FrontendPages::class, 'faqs_page']);
-Route::match(['GET', 'POST'], '/blog', [FrontendPages::class, 'blog_page']);
-Route::get('/blog-detail/{slug}', [FrontendPages::class, 'blog_details_page']);
-Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
-Route::get('/pool-details/{slug}', [FrontendPages::class, 'pool_details_page'])->name('pool.details');
+    Route::match(['GET', 'POST'], '/', [FrontendPages::class, 'home_page']);
+    Route::match(['GET', 'POST'], '/about', [FrontendPages::class, 'about_page']);
+    Route::match(['GET', 'POST'], '/aviva-pools', [FrontendPages::class, 'aviva_pools_page']);
+    Route::match(['GET', 'POST'], '/renaissance-patio', [FrontendPages::class, 'renaissance_patio_page']);
+    Route::match(['GET', 'POST'], '/stick-built', [FrontendPages::class, 'stick_built_page']);
+    Route::match(['GET', 'POST'], '/hardscapes', [FrontendPages::class, 'hardscapes_page']);
+    Route::match(['GET', 'POST'], '/colors', [FrontendPages::class, 'colors_page']);
+    Route::match(['GET', 'POST'], '/request-quote', [FrontendPages::class, 'request_quote_page']);
+    Route::match(['GET', 'POST'], '/faqs', [FrontendPages::class, 'faqs_page']);
+    Route::match(['GET', 'POST'], '/blog', [FrontendPages::class, 'blog_page']);
+    Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
+    Route::get('/pool-details/{slug}', [FrontendPages::class, 'pool_details_page'])->name('pool.details');
 Route::get('/patio-details/{slug}', [FrontendPages::class, 'patio_details_page'])->name('patio.details');
 Route::get('/stick-details/{slug}', [FrontendPages::class, 'stick_details_page'])->name('stick.details');
 Route::get('/hardscapes-details/{slug}', [FrontendPages::class, 'hardscapes_details_page'])->name('hardscapes.details');
+Route::get('/blog-detail/{slug}', [FrontendPages::class, 'blog_details_page']);
+
 
 
 Route::middleware(['is_admin'])->group(function () {
@@ -224,6 +226,8 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/pages/stick_built', [Pages::class, 'stick_built']);
     Route::match(['GET', 'POST'], '/admin/pages/request_quote', [Pages::class, 'request_quote']);
     Route::match(['GET', 'POST'], '/admin/pages/pool_details', [Pages::class, 'pool_details']);
+    Route::match(['GET', 'POST'], '/admin/pages/patio_details', [Pages::class, 'patio_details']);
+    Route::match(['GET', 'POST'], '/admin/pages/hardscapes_details', [Pages::class, 'hardscapes_details']);
 
 
 

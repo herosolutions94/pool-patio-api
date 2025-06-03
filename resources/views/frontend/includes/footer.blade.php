@@ -25,13 +25,13 @@
             <div class="col">
                 <h5>Short Links</h5>
                 <ul class="lst">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="about.php">About Us</a></li>
-                    <li><a href="color.php">Colors</a></li>
-                    <li><a href="aviva-pools.php">Aviva Pools</a></li>
-                    <li><a href="renaissance-patio.php">Renaissance Patio</a></li>
-                    <li><a href="stick-built.php">Stick Built</a></li>
-                    <li><a href="hardscapes.php">Hardscapes</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/colors">Colors</a></li>
+                    <li><a href="/aviva-pools">Aviva Pools</a></li>
+                    <li><a href="/renaissance-patio">Renaissance Patio</a></li>
+                    <li><a href="/stick-built">Stick Built</a></li>
+                    <li><a href="/hardscapes">Hardscapes</a></li>
 
 
                 </ul>
@@ -67,10 +67,12 @@
 
             <div class="col">
                 <h5>Join our mailing list</h5>
-                <form action="newsletter" method="post" autocomplete="off" class="">
+                <form id="newsletterForm" action="{{url('/api/save-newsletter')}}" method="post" autocomplete="off"
+                    class="frmAjax">
                     <label for="email">Stay up to date with the latest news and deals!</label>
                     <div class="txtGrp relative">
-                        <input type="email" name="email" id="email" class="input" placeholder="@ your email address">
+                        <input type="email" name="email" id="email" class="input" placeholder="@ your email address"
+                            required>
                         <button type="submit" class="site_btn">Submit<i class="fi-arrow-right fi-2x"></i></button>
                     </div>
                 </form>
