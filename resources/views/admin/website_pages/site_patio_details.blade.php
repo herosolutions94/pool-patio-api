@@ -6,7 +6,7 @@
 <title>Admin - {{ $site_settings->site_name }}</title>
 @endsection
 @section('page_content')
-{!! breadcrumb('Pool Details Page') !!}
+{!! breadcrumb('Patio Details Page') !!}
 
 <form class="form theme-form" method="post" action="" enctype="multipart/form-data" id="saveForm">
     @csrf

@@ -76,7 +76,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link {{ $admin_page == 'request-quote' ? 'active' : '' }}"
                         href="{{ url('admin/request-quote') }}" aria-expanded="false">
-                        <iconify-icon icon="tabler:request-quote"></iconify-icon>
+                        <iconify-icon icon="tabler:message-user"></iconify-icon>
                         <span class="hide-menu">Request Quotes</span>
                     </a>
                 </li>

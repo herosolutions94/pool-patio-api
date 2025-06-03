@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="btn_blk">
-                <button class="site_btn" type="button">Send Message<i class="spinner hidden"></i></button>
+                <button type="submit" class="site_btn" >Send Message<i class="spinner hidden"></i></button>
             </div>
         </form>
     </div>

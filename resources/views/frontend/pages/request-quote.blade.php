@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 <div class="btn_blk">
-                    <button class="site_btn">Submit</button>
+                    <button type="submit" class="site_btn">Submit<i class="spinner hidden"></i></button>
                 </div>
             </form>
             <p><small>{!! $content['section1_text'] ?? '' !!}</small></p>
