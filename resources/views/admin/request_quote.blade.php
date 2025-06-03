@@ -7,14 +7,14 @@
 @endsection
 @section('page_content')
 @if (request()->segment(3) == 'view')
-{!! breadcrumb('View Message') !!}
+{!! breadcrumb('View Request Quote') !!}
 <div class="card">
     <div class="card-body">
         <div class="row">
             <div class="col-lg-12">
                 <div class="card border shadow-none">
                     <div class="card-body p-4">
-                        <h4 class="card-title mb-3">Message Details</h4>
+                        <h4 class="card-title mb-3">Request Quote Details</h4>
                         <div class="d-flex align-items-center justify-content-between pb-7">
                         </div>
                         <div class="d-flex align-items-center justify-content-between py-3 border-top">
@@ -42,15 +42,39 @@
 
                         <div class="d-flex align-items-center justify-content-between py-3 border-top">
                             <div>
-                                <h5 class="fs-4 fw-semibold mb-0">Message</h5>
+                                <h5 class="fs-4 fw-semibold mb-0">Address</h5>
                             </div>
-                            <p class="mb-0">{{ $row->message }}</p>
+                            <p class="mb-0">{{ $row->address }}</p>
                         </div>
                         <div class="d-flex align-items-center justify-content-between py-3 border-top">
                             <div>
-                                <h5 class="fs-4 fw-semibold mb-0">How do you hear about us?</h5>
+                                <h5 class="fs-4 fw-semibold mb-0">Pool Type</h5>
                             </div>
-                            <p class="mb-0">{{ $row->hear_about_us }}</p>
+                            <p class="mb-0">{{ $row->pool_type }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between py-3 border-top">
+                            <div>
+                                <h5 class="fs-4 fw-semibold mb-0">What stage are you at in the process?</h5>
+                            </div>
+                            <p class="mb-0">{{ $row->stage }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between py-3 border-top">
+                            <div>
+                                <h5 class="fs-4 fw-semibold mb-0">Project Timeline</h5>
+                            </div>
+                            <p class="mb-0">{{ $row->timeline }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between py-3 border-top">
+                            <div>
+                                <h5 class="fs-4 fw-semibold mb-0">What is your estimated budget for this project?</h5>
+                            </div>
+                            <p class="mb-0">{{ $row->budget }}</p>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between py-3 border-top">
+                            <div>
+                                <h5 class="fs-4 fw-semibold mb-0">Anything else we should know?</h5>
+                            </div>
+                            <p class="mb-0">{{ $row->anything_else }}</p>
                         </div>
                     </div>
                 </div>
@@ -59,7 +83,7 @@
     </div>
 </div>
 @else
-{!! breadcrumb('Contact Messages') !!}
+{!! breadcrumb('Request Quotes') !!}
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -73,6 +97,7 @@
                             <th>Full Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Address</th>
                             <th>Status</th>
                             <th>Action</th>
 
@@ -87,6 +112,7 @@
                             <td>{{ "{$row->fname} {$row->lname}" }}</td>
                             <td>{{ $row->email }}</td>
                             <td>{{ $row->phone }}</td>
+                            <td>{{ $row->address }}</td>
                             <td>{!! getReadStatus($row->status) !!}</td>
                             <td>
                                 <div class="dropdown dropstart">
@@ -97,13 +123,13 @@
                                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center gap-3"
-                                                href="{{ url('admin/contact/view/' . $row->id) }}">
+                                                href="{{ url('admin/request-quote/view/' . $row->id) }}">
                                                 <i class="fs-4 ti ti-eye"></i>View
                                             </a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item d-flex align-items-center gap-3"
-                                                href="{{ url('admin/contact/delete/' . $row->id) }}"
+                                                href="{{ url('admin/request-quote/delete/' . $row->id) }}"
                                                 onclick="return confirm('Are you sure?');">
                                                 <i class="fs-4 ti ti-trash"></i>Delete
                                             </a>
