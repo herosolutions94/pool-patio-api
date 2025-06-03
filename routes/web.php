@@ -83,9 +83,12 @@ Route::match(['GET', 'POST'], '/colors', [FrontendPages::class, 'colors_page']);
 Route::match(['GET', 'POST'], '/request-quote', [FrontendPages::class, 'request_quote_page']);
 Route::match(['GET', 'POST'], '/faqs', [FrontendPages::class, 'faqs_page']);
 Route::match(['GET', 'POST'], '/blog', [FrontendPages::class, 'blog_page']);
+Route::get('/blog-detail/{slug}', [FrontendPages::class, 'blog_details_page']);
 Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
 Route::get('/pool-details/{slug}', [FrontendPages::class, 'pool_details_page'])->name('pool.details');
-Route::match(['GET', 'POST'], '/patio-details', [FrontendPages::class, 'patio_details_page']);
+Route::get('/patio-details/{slug}', [FrontendPages::class, 'patio_details_page'])->name('patio.details');
+Route::get('/stick-details/{slug}', [FrontendPages::class, 'stick_details_page'])->name('stick.details');
+Route::get('/hardscapes-details/{slug}', [FrontendPages::class, 'hardscapes_details_page'])->name('hardscapes.details');
 
 
 Route::middleware(['is_admin'])->group(function () {

@@ -352,7 +352,7 @@
 
                                                     <input type="hidden" name="colour_id[]" value="{{ $colour->id }}">
                                                     <td>
-                                                        <input type="text" name="colour_name[]" class="form-control" value="{{ $colour->title }}" placeholder="Colour Title" required>
+                                                        <input type="text" name="colour_name[]" class="form-control" value="{{ $colour->title }}" placeholder=" Title" required>
                                                     </td>
 
                                                     <td>
@@ -381,7 +381,7 @@
 
 
                                                     <td>
-                                                        <input type="text" name="colour_name[]" class="form-control" placeholder="Colour Title" required>
+                                                        <input type="text" name="colour_name[]" class="form-control" placeholder=" Title" required>
                                                     </td>
 
                                                     <td>

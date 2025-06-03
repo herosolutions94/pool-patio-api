@@ -18,7 +18,7 @@
 
             <div class="col">
                 <div class="inner">
-                    <a href="pool-details.php" class="image">
+                    <a href="{{ route('pool.details', $aviva->slug) }}" class="image">
                         <img src="{{ get_site_image_src('aviva', $aviva['image2'] ?? 'default.jpg') }}" alt="" class="show_second">
                         <img src="{{ get_site_image_src('aviva', $aviva['image1'] ?? 'default.jpg') }}" alt="" class="show_main">
                     </a>

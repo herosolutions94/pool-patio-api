@@ -17,7 +17,7 @@
             @php
             $content = json_decode($built->content, true);
             @endphp
-            <div class="flex" data-aos="fade-up"><a href="patio-details.php"></a>
+            <div class="flex" data-aos="fade-up"><a href="{{ route('stick.details', $built->slug) }}"></a>
                 <div class="image">
                     <img src="{{ get_site_image_src('stick', $built['image1'] ?? 'default.jpg') }}" alt="">
                 </div>
@@ -25,7 +25,7 @@
                     <h3>{{$built->name}}</h3>
                     {!! $content['short_text'] ?? '' !!}
                     <div class="btn_blk">
-                        <a href="patio-details.php" class="site_btn">Read More</a>
+                        <a href="{{ route('stick.details', $built->slug) }}" class="site_btn">Read More</a>
                     </div>
                 </div>
             </div>

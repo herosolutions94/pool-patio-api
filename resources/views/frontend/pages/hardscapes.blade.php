@@ -20,13 +20,13 @@
           @foreach($hardscapes as $hard)
             <div class="col">
                 <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
+                    <a href="{{ route('hardscapes.details', $hard->slug) }}" class="image">
                         <img src="{{ get_site_image_src('hardscapes', $hard['image1'] ?? 'default.jpg') }}" alt="">
                     </a>
                     <div class="txt">
                         <h4>{{$hard->name}}</h4>
                         <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
+                            <a href="{{ route('hardscapes.details', $hard->slug) }}" class="site_btn block">Read More</a>
                         </div>
                     </div>
                 </div>

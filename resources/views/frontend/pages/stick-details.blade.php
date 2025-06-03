@@ -16,7 +16,7 @@
 
 
 
-                        <div><img src="{{ get_site_image_src('renaissance', $gall->cover_image ?? 'default.jpg') }}" /></div>
+                        <div><img src="{{ get_site_image_src('stick', $gall->cover_image ?? 'default.jpg') }}" /></div>
 
                         @endforeach
 
@@ -27,7 +27,7 @@
 
 
 
-                        <div><img src="{{ get_site_image_src('renaissance', $gall->cover_image ?? 'default.jpg') }}" /></div>
+                        <div><img src="{{ get_site_image_src('stick', $gall->cover_image ?? 'default.jpg') }}" /></div>
 
                         @endforeach
 
@@ -80,7 +80,7 @@
 
             @foreach($designs as $design)
             <div class="card_view">
-                <img src="{{ get_site_image_src('renaissance', $design->size_image ?? 'default.jpg') }}" alt="">
+                <img src="{{ get_site_image_src('stick', $design->size_image ?? 'default.jpg') }}" alt="">
                 <h4>{{$design->title}}</h4>
             </div>
           @endforeach
