@@ -4,11 +4,11 @@
 
 @section('content')
 
-<section class="sm_banner" style="background:url(./assets/images/banner4.jpg)">
+<section class="sm_banner" style="background-image: url('{{ get_site_image_src('images', !empty($content['image1']) ? $content['image1'] : 'default.jpg') }}')">
     <div class="contain">
         <div class="cntnt" data-aos="fade-up">
-            <h1>Get In Touch With Us</h1>
-            <p>We’re Here to Help and Answer Any Questions You May Have</p>
+              <h1>{!! $content['banner_heading'] ?? '' !!}</h1>
+            <p>{!! $content['banner_text'] ?? '' !!}</p>
         </div>
     </div>
 </section>
@@ -16,9 +16,8 @@
     <div class="contain">
         <div class="flex">
             <div class="colL" data-aos="fade-right">
-                <h3>We’d Love to Hear From You</h3>
-                <p>Whether you have questions about our services, need expert advice, or are ready to start your next
-                    outdoor project, our team is here to help. Reach out today and let’s bring your vision to life.</p>
+              <h3>{!! $content['section1_heading'] ?? '' !!}</h3>
+                <p>{!! $content['section1_text'] ?? '' !!}</p>
             </div>
             <div class="colR" data-aos="fade-left">
                 <div class="flex_contact">
@@ -27,8 +26,7 @@
                             <div class="img_icon">
                                 <img src="assets/images/map.svg" alt="">
                             </div>
-                            <p>Pool and Patio</br>
-                                Mooresville, North Carolina, USA</p>
+                            <p>{{$site_settings->site_address}}</p>
                         </div>
                     </div>
 
@@ -37,7 +35,7 @@
                             <div class="img_icon">
                                 <img src="assets/images/call.svg" alt="">
                             </div>
-                            <a href="tel:(443) 661-4875">(443) 661-4875</a>
+                            <a href="tel:{{$site_settings->site_phone}}">{{$site_settings->site_phone}}</a>
                         </div>
                     </div>
 
@@ -46,7 +44,7 @@
                             <div class="img_icon">
                                 <img src="assets/images/email.svg" alt="">
                             </div>
-                            <a href="mailto:info@pool-patio.com">info@pool-patio.com</a>
+                            <a href="mailto:{{$site_settings->site_email}}">{{$site_settings->site_email}}</a>
                         </div>
                     </div>
                 </div>
@@ -76,7 +74,7 @@
                 </div>
             </div>
             <div class="btn_blk">
-                <button class="site_btn">Send Message</button>
+                <button class="site_btn" type="button">Send Message<i class="spinner hidden"></i></button>
             </div>
         </form>
     </div>

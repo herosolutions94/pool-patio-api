@@ -16,7 +16,6 @@ class Request_Quote_model extends Model
         'email',
         'phone',
         'address',
-        'hear_about_us',
         'status',
         'pool_type',
         'stage',

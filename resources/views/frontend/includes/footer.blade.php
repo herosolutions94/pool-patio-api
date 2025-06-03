@@ -4,8 +4,8 @@
             <div class="col">
                 <h5>Contact Info</h5>
                 <ul class="lst">
-                    <li><a href="mailto:info@duttons.com">{{$site_settings->site_email}}</a></li>
-                    <li><a href="tel:(443) 661-4875">{{$site_settings->site_phone}}</a></li>
+                    <li><a href="mailto:{{$site_settings->site_email}}">{{$site_settings->site_email}}</a></li>
+                    <li><a href="tel:{{$site_settings->site_phone}}">{{$site_settings->site_phone}}</a></li>
                 </ul>
                 <div class="br"></div>
                 <h5>Follow us on</h5>
@@ -73,7 +73,7 @@
                     <div class="txtGrp relative">
                         <input type="email" name="email" id="email" class="input" placeholder="@ your email address"
                             required>
-                        <button type="submit" class="site_btn">Submit<i class="fi-arrow-right fi-2x"></i></button>
+                        <button type="submit"  class="site_btn">Submit<i class="spinner hidden"></i></button>
                     </div>
                 </form>
             </div>

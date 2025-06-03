@@ -36,6 +36,7 @@ use App\Http\Controllers\admin\Color;
 use App\Http\Controllers\admin\Team;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\FrontendPages;
+use App\Http\Controllers\admin\Request_Quote;
 
 /*
 |--------------------------------------------------------------------------
@@ -247,6 +248,11 @@ Route::middleware(['is_admin'])->group(function () {
     Route::get('/admin/contact', [Contact::class, 'index']);
     Route::match(['GET', 'POST'], '/admin/contact/view/{id}', [Contact::class, 'view']);
     Route::match(['GET', 'POST'], '/admin/contact/delete/{id}', [Contact::class, 'delete']);
+
+     /*==============================Request Quote =====================================*/
+    Route::get('/admin/request-quote', [Request_Quote::class, 'index']);
+    Route::match(['GET', 'POST'], '/admin/request-quote/view/{id}', [Request_Quote::class, 'view']);
+    Route::match(['GET', 'POST'], '/admin/request-quote/delete/{id}', [Request_Quote::class, 'delete']);
 
     /*==============================Subscribers =====================================*/
     Route::get('/admin/subscribers', [Subscribers::class, 'index']);

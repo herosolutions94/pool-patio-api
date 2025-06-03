@@ -22,18 +22,16 @@ $(document).on("submit", ".frmAjax", function (e) {
         success: function (response) {
             frmbtn.attr("disabled", false);
             frmIcon.addClass("hidden");
-            // console.log("Response:", response);
             if (response.status == 1 || response.success == true) {
-                // Display success message using Toastr.js
-                toastr.success(response.message);
+                frm.reset();
+                toastr.success(response.msg);
                 if (response?.redirect_url) {
                     setTimeout(() => {
                         window.location.href = response?.redirect_url
                     }, 2000);
                 }
             } else {
-                // Display error message indicating the field that is empty
-                toastr.error(response.message);
+                toastr.error(response.msg);
             }
         },
         complete: function () {
