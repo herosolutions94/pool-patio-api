@@ -1,7 +1,7 @@
 <header class="ease">
     <div class="contain">
         <div class="logo">
-            <a href="index.php">
+            <a href="{{ url('/') }}">
                 <img src="{{ get_site_image_src('images', $site_settings->site_logo) }}" alt="">
             </a>
         </div>
