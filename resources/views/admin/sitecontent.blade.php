@@ -144,6 +144,25 @@
                             </td>
                         </tr>
 
+                        <tr>
+                            <td>11</td>
+                            <td width="65%">Patio Details</td>
+                            <td>
+                                <a href="{{ url('admin/pages/patio_details') }}" class="btn btn-primary active">Edit
+                                    Page</a>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>11</td>
+                            <td width="65%">Hardscapes Details</td>
+                            <td>
+                                <a href="{{ url('admin/pages/hardscapes_details') }}"
+                                    class="btn btn-primary active">Edit
+                                    Page</a>
+                            </td>
+                        </tr>
+
 
 
 

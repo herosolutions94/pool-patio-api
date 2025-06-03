@@ -13,7 +13,7 @@
 <section class="patio_sec">
     <div class="contain">
         <div class="listing">
-            <div class="flex" data-aos="fade-up"><a href="patio-details.php"></a>
+            <div class="flex" data-aos="fade-up"><a href="/patio-details"></a>
                 <div class="image">
                     <img src="assets/images/p1.webp" alt="">
                 </div>

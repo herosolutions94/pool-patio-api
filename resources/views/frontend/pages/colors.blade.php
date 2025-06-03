@@ -143,16 +143,16 @@
 
     </div>
 </section>
-<section class="cta_sec bg">
+<section class="cta_sec">
     <div class="contain">
         <div class="flex">
             <div class="sec_heading" data-aos="fade-up">
-                <h2>Ready to Elevate Your Backyard?</h2>
-                <p>Let us help you build a patio cover that brings style, comfort, and value to your home. Our team will
-                    guide you through every step—from design to final installation.</p>
+                <h2>{!! $content['cta_heading'] ?? '' !!}</h2>
+                <p>{!! $content['cta_text'] ?? '' !!}</p>
             </div>
             <div class="btn_blk text-center" data-aos="fade-up">
-                <a href="request-quote.php" class="site_btn light">Schedule a Free Consultation</a>
+                <a href="{{ url($content['cta_btn1_link']) }}" class="site_btn light">{!!
+                    $content['cta_btn1_txt'] ?? '' !!}</a>
             </div>
         </div>
     </div>

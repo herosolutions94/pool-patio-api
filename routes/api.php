@@ -29,6 +29,7 @@ use App\Http\Controllers\Controller;
 Route::post('/get_data', [App\Http\Controllers\Ajax::class, 'get_data']);
 Route::post('/save-newsletter', [App\Http\Controllers\Ajax::class, 'newsletter']);
 Route::post('/save-contact-message', [App\Http\Controllers\Ajax::class, 'contact_us']);
+Route::post('/save-request-quote', [App\Http\Controllers\Ajax::class, 'request_quote']);
 Route::post('/save-image', [App\Http\Controllers\Ajax::class, 'save_image']);
 Route::post('/save-verification-uploads', [App\Http\Controllers\Ajax::class, 'save_verification_uploads']);
 Route::post('/upload-image', [App\Http\Controllers\Ajax::class, 'upload_image']);

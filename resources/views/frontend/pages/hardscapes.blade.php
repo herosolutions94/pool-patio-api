@@ -18,13 +18,13 @@
         <div class="flex" data-aos="fade-up">
             <div class="col">
                 <div class="inner">
-                    <a href="hardscapes-details.php" class="image">
+                    <a href="/hardscapes-details" class="image">
                         <img src="assets/images/hard1.webp" alt="">
                     </a>
                     <div class="txt">
                         <h4>Finishes That blend With Nature</h4>
                         <div class="btn_blk">
-                            <a href="hardscapes-details.php" class="site_btn block">Read More</a>
+                            <a href="/hardscapes-details" class="site_btn block">Read More</a>
                         </div>
                     </div>
                 </div>

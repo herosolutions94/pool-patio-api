@@ -635,6 +635,110 @@ class Pages extends Controller
         return view('admin.website_pages.site_pool_details', $this->data);
     }
 
+    public function patio_details(Request $request)
+    {
+        has_access(12);
+        $page = Sitecontent::where('ckey', $request->segment(3))->first();
+        if (empty($page)) {
+            $page = new Sitecontent;
+            $page->ckey = $request->segment(3);
+            $page->code = '';
+            $page->save();
+        }
+        $input = $request->all();
+        if ($input) {
+            if (!empty($page->code)) {
+                $content_row = unserialize($page->code);
+            } else {
+                $content_row = array();
+            }
+
+            if (!is_array($content_row))
+                $content_row = array();
+            for ($i = 1; $i <= 1; $i++) {
+                if ($request->hasFile('image' . $i)) {
+
+                    $request->validate([
+                        'image' . $i => 'mimes:png,jpg,jpeg,svg,gif,webp|max:40000'
+                    ]);
+                    $image = $request->file('image' . $i)->store('public/images/');
+                    if (!empty($image)) {
+                        $input['image' . $i] = basename($image);
+                    }
+                } else {
+                    // $input['image'.$i]='';
+                }
+            }
+            // pr($input);
+            $data = serialize(array_merge($content_row, $input));
+            $page->ckey = $request->segment(3);
+            $page->code = $data;
+            $page->save();
+            return redirect('admin/pages/' . $request->segment(3))
+                ->with('success', 'Content Updated Successfully');
+        }
+        $this->data['row'] = Sitecontent::where('ckey', $request->segment(3))->first();;
+        if (!empty($this->data['row']->code)) {
+            $this->data['sitecontent'] = unserialize($this->data['row']->code);
+        } else {
+            $this->data['sitecontent'] = array();
+        }
+        $this->data['enable_editor'] = true;
+        return view('admin.website_pages.site_patio_details', $this->data);
+    }
+
+    public function hardscapes_details(Request $request)
+    {
+        has_access(12);
+        $page = Sitecontent::where('ckey', $request->segment(3))->first();
+        if (empty($page)) {
+            $page = new Sitecontent;
+            $page->ckey = $request->segment(3);
+            $page->code = '';
+            $page->save();
+        }
+        $input = $request->all();
+        if ($input) {
+            if (!empty($page->code)) {
+                $content_row = unserialize($page->code);
+            } else {
+                $content_row = array();
+            }
+
+            if (!is_array($content_row))
+                $content_row = array();
+            for ($i = 1; $i <= 1; $i++) {
+                if ($request->hasFile('image' . $i)) {
+
+                    $request->validate([
+                        'image' . $i => 'mimes:png,jpg,jpeg,svg,gif,webp|max:40000'
+                    ]);
+                    $image = $request->file('image' . $i)->store('public/images/');
+                    if (!empty($image)) {
+                        $input['image' . $i] = basename($image);
+                    }
+                } else {
+                    // $input['image'.$i]='';
+                }
+            }
+            // pr($input);
+            $data = serialize(array_merge($content_row, $input));
+            $page->ckey = $request->segment(3);
+            $page->code = $data;
+            $page->save();
+            return redirect('admin/pages/' . $request->segment(3))
+                ->with('success', 'Content Updated Successfully');
+        }
+        $this->data['row'] = Sitecontent::where('ckey', $request->segment(3))->first();;
+        if (!empty($this->data['row']->code)) {
+            $this->data['sitecontent'] = unserialize($this->data['row']->code);
+        } else {
+            $this->data['sitecontent'] = array();
+        }
+        $this->data['enable_editor'] = true;
+        return view('admin.website_pages.site_hardscapes_details', $this->data);
+    }
+
     
 
     public function cta_section(Request $request)

@@ -86,6 +86,7 @@ Route::get('/admin/logout', [Index::class, 'logout']);
     Route::match(['GET', 'POST'], '/contact', [FrontendPages::class, 'contact_page']);
     Route::match(['GET', 'POST'], '/pool-details', [FrontendPages::class, 'pool_details_page']);
     Route::match(['GET', 'POST'], '/patio-details', [FrontendPages::class, 'patio_details_page']);
+    Route::match(['GET', 'POST'], '/hardscapes-details', [FrontendPages::class, 'hardscapes_details_page']);
 
 
 Route::middleware(['is_admin'])->group(function () {
@@ -221,6 +222,8 @@ Route::middleware(['is_admin'])->group(function () {
     Route::match(['GET', 'POST'], '/admin/pages/stick_built', [Pages::class, 'stick_built']);
     Route::match(['GET', 'POST'], '/admin/pages/request_quote', [Pages::class, 'request_quote']);
     Route::match(['GET', 'POST'], '/admin/pages/pool_details', [Pages::class, 'pool_details']);
+    Route::match(['GET', 'POST'], '/admin/pages/patio_details', [Pages::class, 'patio_details']);
+    Route::match(['GET', 'POST'], '/admin/pages/hardscapes_details', [Pages::class, 'hardscapes_details']);
 
 
 

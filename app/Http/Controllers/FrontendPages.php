@@ -110,7 +110,6 @@ class FrontendPages extends Controller
 
         ];
 
-                $this->data['cta_section'] = get_page('cta_section');
 
        
         return view('frontend/pages/pool-details',$this->data);
@@ -121,24 +120,47 @@ class FrontendPages extends Controller
      public function patio_details_page(Request $request)
     {
         $this->data['content'] = get_page('patio_details');
-        $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
+        // $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
         $this->data['meta_desc'] = (object)[
-            'meta_title' => $this->data['content']['meta_title'],
-            'meta_description' => $this->data['content']['meta_description'],
-            'meta_keywords' => $this->data['content']['meta_keywords'],
-            'meta_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
-            'og_title' => $this->data['content']['meta_title'],
-            'og_description' => $this->data['content']['meta_description'],
-            'meta_keywords' => $this->data['content']['meta_keywords'],
-            'twitter_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
-            'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
+        //     'meta_title' => $this->data['content']['meta_title'],
+        //     'meta_description' => $this->data['content']['meta_description'],
+        //     'meta_keywords' => $this->data['content']['meta_keywords'],
+        //     'meta_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
+        //     'og_title' => $this->data['content']['meta_title'],
+        //     'og_description' => $this->data['content']['meta_description'],
+        //     'meta_keywords' => $this->data['content']['meta_keywords'],
+        //     'twitter_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
+        //     'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
 
-                $this->data['cta_section'] = get_page('cta_section');
 
        
         return view('frontend/pages/patio-details',$this->data);
+
+
+    }
+
+    public function hardscapes_details_page(Request $request)
+    {
+        $this->data['content'] = get_page('hardscapes_details');
+        // $this->data['page_title'] = $this->data['content']['page_title'] . ' - ' . $this->data['site_settings']->site_name;
+        $this->data['meta_desc'] = (object)[
+        //     'meta_title' => $this->data['content']['meta_title'],
+        //     'meta_description' => $this->data['content']['meta_description'],
+        //     'meta_keywords' => $this->data['content']['meta_keywords'],
+        //     'meta_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
+        //     'og_title' => $this->data['content']['meta_title'],
+        //     'og_description' => $this->data['content']['meta_description'],
+        //     'meta_keywords' => $this->data['content']['meta_keywords'],
+        //     'twitter_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
+        //     'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
+
+        ];
+
+
+       
+        return view('frontend/pages/hardscapes-details',$this->data);
 
 
     }
@@ -234,7 +256,6 @@ class FrontendPages extends Controller
 
         ];
         
-        $this->data['cta_section'] = get_page('cta_section');
         
 
                 return view('frontend/pages/faqs',$this->data);
@@ -284,7 +305,6 @@ class FrontendPages extends Controller
             'og_image' => get_site_image_src('images', $this->data['site_settings']->site_thumb),
 
         ];
-        $this->data['cta_section'] = get_page('cta_section');
 
         return view('frontend/pages/colors',$this->data);
     }
