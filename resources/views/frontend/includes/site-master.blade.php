@@ -26,6 +26,13 @@
 <!-- Main CSS -->
 <link rel="stylesheet" href="{{ asset('css/App.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/commonCss.css') }}">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+
 
 <!-- Favicon -->
-{{-- <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}"> --}}
+<link rel="icon"
+    href="{{ !empty($site_settings) ? get_site_image_src('images', $site_settings->site_icon) : get_site_image_src('images', '') }}"
+    type="image/x-icon">
+<link rel="shortcut icon"
+    href="{{ !empty($site_settings) ? get_site_image_src('images', $site_settings->site_icon) : get_site_image_src('images', '') }}"
+    type="image/x-icon">

@@ -27,6 +27,7 @@ use App\Models\Hardscapes_model;
 use App\Models\Stick_Built_model;
 use App\Models\Renaissance_model;
 use App\Models\Aviva_model;
+use App\Models\Faq_model;
 
 
 class FrontendPages extends Controller
@@ -317,6 +318,8 @@ class FrontendPages extends Controller
         ];
 
         $this->data['cta_section'] = get_page('cta_section');
+         $this->data['faqs'] = Faq_model::orderBy('id', 'DESC')->where('status', '1')->get();
+
 
         return view('frontend/pages/faqs', $this->data);
     }
